@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="rollButton">Lancer le dé</button>
+</body>
+
+</html>
+
+<script src="../js/de.js"></script>
+
+<script>
+    document.getElementById("rollButton").addEventListener('click', throwDice);
+
+    function throwDice() {
+        var dice = new Dice();
+        var resulatDice = dice.throw();
+        console.log(resulatDice);
+    }
+
+</script>
