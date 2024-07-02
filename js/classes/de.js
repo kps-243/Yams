@@ -20,4 +20,13 @@ class Dice {
   }
 }
 
+document.getElementById("rollButton").addEventListener("click", throwDice);
+
+function throwDice() {
+  var dice = new Dice();
+  var resulatDice = dice.throw();
+  console.log(resulatDice);
+  var changeimage = dice.updateDiceImage(resulatDice);
+}
+
 export default Dice;
