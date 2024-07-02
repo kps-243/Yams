@@ -22,22 +22,19 @@ const buttons = {
 var game = new YamsGame(["Alice", "Bob"]);
 var scoreBoard = new ScoreBoard(game);
 
-// document.getElementById("rollButton").addEventListener("click", () => {
-//     game.rollDice();
-// });
 
 document
   .getElementById("generate-grid")
-  .addEventListener("click", scoreBoard.afficheGrid);
+  .addEventListener("click", scoreBoard.generatePlayerInputs);
 
 game.dice.map((de) => de.updateDiceImage);
 
 console.log(`Rolled dice: ${game.displayDice()}`);
 const player = game.currentPlayer();
 console.log(`It's ${player.name}'s turn`);
-
+console.log(document.getElementById("rollButton"));
 document.getElementById("rollButton").addEventListener("click", () => {
-  let test = game.rollDice();
+  game.rollDice();
 
   console.log(`Rolled dice: ${game.displayDice()}`);
   const player = game.currentPlayer();
