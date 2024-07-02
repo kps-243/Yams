@@ -1,13 +1,15 @@
 class Dice {
   constructor() {
     this.locked = false;
-    this.valeur = this.throw();
-    // this.imageElement = document.createElement("img");
-    // this.imageElement.classList.add("diceImage");
-    // this.imageElement.src = `../image/dice${this.valeur}.png`;
-    // this.imageElement.alt = "Dice";
-    // this.imageElement.width = 300;
-    // this.imageElement.height = 200;
+    this.valeur = 1;
+    //this.valeur = this.throw();
+
+    this.imageElement = document.createElement("img");
+    this.imageElement.classList.add("diceImage");
+    this.imageElement.src = `../image/dice${this.valeur}.png`;
+    this.imageElement.alt = "Dice";
+    this.imageElement.width = 300;
+    this.imageElement.height = 200;
 
     // this.imageElement.addEventListener("click", () => {
     //   this.toggleLock();
@@ -18,15 +20,15 @@ class Dice {
 
   throw() {
     if (!this.locked) {
-    let valeur =  Math.floor(Math.random() * 6) + 1;
-    this.updateDiceImage(valeur);
-    this.valeur = valeur;
+      let valeur = Math.floor(Math.random() * 6) + 1;
+      this.updateDiceImage(valeur);
+      this.valeur = valeur;
     }
   }
 
   updateDiceImage(value) {
-  //   console.log(this.imageElement);
-  //   this.imageElement.src = `../image/dice${value}.png`;
+    //console.log(this.imageElement);
+    this.imageElement.src = `../image/dice${value}.png`;
   }
 
   toggleLock() {
@@ -38,6 +40,5 @@ class Dice {
     }
   }
 }
-
 
 export default Dice;

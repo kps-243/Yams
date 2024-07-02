@@ -1,212 +1,242 @@
 import YamsGame from "./classes/YamsGame.js";
 import ScoreBoard from "./classes/scoreBoard.js";
-import Dice from "./classes/de.js"
+import Dice from "./classes/de.js";
 import Player from "./classes/player.js";
 
-
 const buttons = {
-    brelan: document.querySelector('#buttonBrelan'),
-    carre: document.querySelector('#buttonCarre'),
-    fullHouse: document.querySelector('#buttonFullHouse'),
-    petiteSuite: document.querySelector('#buttonPetiteSuite'),
-    grandeSuite: document.querySelector('#buttonGrandeSuite'),
-    yams: document.querySelector('#buttonYams'),
-    chance: document.querySelector('#buttonChance'),
-    as: document.querySelector('#buttonAs'),
-    deux: document.querySelector('#buttonDeux'),
-    trois: document.querySelector('#buttonTrois'),
-    quatre: document.querySelector('#buttonQuatre'),
-    cinq: document.querySelector('#buttonCinq'),
-    six: document.querySelector('#buttonSix')
+  brelan: document.querySelector("#buttonBrelan"),
+  carre: document.querySelector("#buttonCarre"),
+  fullHouse: document.querySelector("#buttonFullHouse"),
+  petiteSuite: document.querySelector("#buttonPetiteSuite"),
+  grandeSuite: document.querySelector("#buttonGrandeSuite"),
+  yams: document.querySelector("#buttonYams"),
+  chance: document.querySelector("#buttonChance"),
+  as: document.querySelector("#buttonAs"),
+  deux: document.querySelector("#buttonDeux"),
+  trois: document.querySelector("#buttonTrois"),
+  quatre: document.querySelector("#buttonQuatre"),
+  cinq: document.querySelector("#buttonCinq"),
+  six: document.querySelector("#buttonSix"),
 };
 
 var game = new YamsGame(["Alice", "Bob"]);
 var scoreBoard = new ScoreBoard(game);
 
-
 // document.getElementById("rollButton").addEventListener("click", () => {
 //     game.rollDice();
 // });
 
-document.getElementById('generate-grid').addEventListener("click", scoreBoard.afficheGrid)
+document
+  .getElementById("generate-grid")
+  .addEventListener("click", scoreBoard.afficheGrid);
 
-
-
-game.dice.map(de => de.updateDiceImage)
-
+game.dice.map((de) => de.updateDiceImage);
 
 console.log(`Rolled dice: ${game.displayDice()}`);
 const player = game.currentPlayer();
 console.log(`It's ${player.name}'s turn`);
 
-// Example of recording a score
+document.getElementById("rollButton").addEventListener("click", () => {
+  let test = game.rollDice();
 
-let valeur = game.dice.reduce((acc, de) => acc + de.valeur, 0);
+  console.log(`Rolled dice: ${game.displayDice()}`);
+  const player = game.currentPlayer();
+  console.log(`It's ${player.name}'s turn`);
 
-const valeurs = game.dice.map(de => de.valeur);
-const compte = {};
+  game.dice.map((de) => de.updateDiceImage);
 
+  let valeur = game.dice.reduce((acc, de) => acc + de.valeur, 0);
 
-valeurs.forEach(valeur => {
+  const valeurs = game.dice.map((de) => de.valeur);
+  const compte = {};
+
+  valeurs.forEach((valeur) => {
     if (compte[valeur]) {
-        compte[valeur]++;
+      compte[valeur]++;
     } else {
-        compte[valeur] = 1;
+      compte[valeur] = 1;
     }
-});
+  });
 
-for (let valeur in compte) {
+  for (let valeur in compte) {
     if (compte[valeur] === 3) {
-        buttons.brelan.style.display = "block";
-        buttons.brelan.addEventListener("click", addBrelan);
+      buttons.brelan.style.display = "block";
+      buttons.brelan.addEventListener("click", addBrelan);
+    } else {
+      buttons.brelan.style.display = "none";
     }
 
     if (compte[valeur] === 4) {
-        buttons.carre.style.display = "block";
-        buttons.carre.addEventListener("click", addCarre);
+      buttons.carre.style.display = "block";
+      buttons.carre.addEventListener("click", addCarre);
+    } else {
+      buttons.carre.style.display = "none";
     }
 
     if (isFullHouse(compte)) {
-        buttons.fullHouse.style.display = "block";
-        buttons.fullHouse.addEventListener("click", addFullHouse);
+      buttons.fullHouse.style.display = "block";
+      buttons.fullHouse.addEventListener("click", addFullHouse);
+    } else {
+      buttons.fullHouse.style.display = "none";
     }
 
     if (isPetiteSuite(compte)) {
-        buttons.petiteSuite.style.display = "block";
-        buttons.petiteSuite.addEventListener("click", addPetiteSuite);
+      buttons.petiteSuite.style.display = "block";
+      buttons.petiteSuite.addEventListener("click", addPetiteSuite);
+    } else {
+      buttons.petiteSuite.style.display = "none";
     }
 
     if (isGrandeSuite(compte)) {
-        buttons.grandeSuite.style.display = "block";
-        buttons.grandeSuite.addEventListener("click", addGrandeSuite);
+      buttons.grandeSuite.style.display = "block";
+      buttons.grandeSuite.addEventListener("click", addGrandeSuite);
+    } else {
+      buttons.grandeSuite.style.display = "none";
     }
 
     if (compte[valeur] === 5) {
-        buttons.yams.style.display = "block";
-        buttons.yams.addEventListener("click", addYams);
+      buttons.yams.style.display = "block";
+      buttons.yams.addEventListener("click", addYams);
+    } else {
+      buttons.yams.style.display = "none";
     }
     if (valeur === 1) {
-        buttons.as.style.display = "block";
-        buttons.un.addEventListener("click", () => addScore(1));
+      buttons.as.style.display = "block";
+      buttons.un.addEventListener("click", () => addScore(1));
+    } else {
+      buttons.as.style.display = "none";
     }
     if (valeur == 2) {
-        buttons.deux.style.display = "block";
-        buttons.deux.addEventListener("click", () => addScore(2));
+      buttons.deux.style.display = "block";
+      buttons.deux.addEventListener("click", () => addScore(2));
+    } else {
+      buttons.deux.style.display = "none";
     }
     if (valeur == 3) {
-        buttons.trois.style.display = "block";
-        buttons.trois.addEventListener("click", () => addScore(3));
+      buttons.trois.style.display = "block";
+      buttons.trois.addEventListener("click", () => addScore(3));
+    } else {
+      buttons.trois.style.display = "none";
     }
     if (valeur == 4) {
-        buttons.quatre.style.display = "block";
-        buttons.quatre.addEventListener("click", () => addScore(4));
+      buttons.quatre.style.display = "block";
+      buttons.quatre.addEventListener("click", () => addScore(4));
+    } else {
+      buttons.quatre.style.display = "none";
     }
     if (valeur == 5) {
-        buttons.cinq.style.display = "block";
-        buttons.cinq.addEventListener("click", () => addScore(5));
+      buttons.cinq.style.display = "block";
+      buttons.cinq.addEventListener("click", () => addScore(5));
+    } else {
+      buttons.cinq.style.display = "none";
     }
     if (valeur == 6) {
-        buttons.six.style.display = "block";
-        buttons.six.addEventListener("click", () => addScore(6));
+      buttons.six.style.display = "block";
+      buttons.six.addEventListener("click", () => addScore(6));
+    } else {
+      buttons.six.style.display = "none";
     }
 
     // La chance est toujours disponible
     buttons.chance.style.display = "block";
     buttons.chance.addEventListener("click", addChance);
-}
+  }
 
-function addBrelan() {
+  function addBrelan() {
     scoreBoard.recordScore("brelan", 30);
-}
+  }
 
-function addCarre() {
+  function addCarre() {
     scoreBoard.recordScore("carre", 40);
-}
+  }
 
-function addFullHouse() {
+  function addFullHouse() {
     scoreBoard.recordScore("fullHouse", 35);
-}
+  }
 
-function addPetiteSuite() {
+  function addPetiteSuite() {
     scoreBoard.recordScore("petiteSuite", 20);
-}
+  }
 
-function addGrandeSuite() {
+  function addGrandeSuite() {
     scoreBoard.recordScore("grandeSuite", 25);
-}
+  }
 
-function addYams() {
+  function addYams() {
     scoreBoard.recordScore("yams", 50);
-}
+  }
 
-if (valeur === 1) {
+  if (valeur === 1) {
     buttons.as.style.display = "block";
     buttons.un.addEventListener("click", () => addScore(1));
-}
-if (valeur == 2) {
+  }
+  if (valeur == 2) {
     buttons.deux.style.display = "block";
     buttons.deux.addEventListener("click", () => addScore(2));
-}
-if (valeur == 3) {
+  }
+  if (valeur == 3) {
     buttons.trois.style.display = "block";
     buttons.trois.addEventListener("click", () => addScore(3));
-}
-if (valeur == 4) {
+  }
+  if (valeur == 4) {
     buttons.quatre.style.display = "block";
     buttons.quatre.addEventListener("click", () => addScore(4));
-}
-if (valeur == 5) {
+  }
+  if (valeur == 5) {
     buttons.cinq.style.display = "block";
     buttons.cinq.addEventListener("click", () => addScore(5));
-}
-if (valeur == 6) {
+  }
+  if (valeur == 6) {
     buttons.six.style.display = "block";
     buttons.six.addEventListener("click", () => addScore(6));
-}
+  }
 
-
-function addChance() {
+  function addChance() {
     let total = 0;
     for (let valeur in compte) {
-        total += valeur * compte[valeur];
+      total += valeur * compte[valeur];
     }
     scoreBoard.recordScore("chance", total);
-}
+  }
 
-function isFullHouse(compte) {
+  function isFullHouse(compte) {
     let hasThree = false;
     let hasTwo = false;
     for (let valeur in compte) {
-        if (compte[valeur] === 3) hasThree = true;
-        if (compte[valeur] === 2) hasTwo = true;
+      if (compte[valeur] === 3) hasThree = true;
+      if (compte[valeur] === 2) hasTwo = true;
     }
     return hasThree && hasTwo;
-}
+  }
 
-function isPetiteSuite(compte) {
+  function isPetiteSuite(compte) {
     const suites = [
-        [1, 2, 3, 4],
-        [2, 3, 4, 5],
-        [3, 4, 5, 6]
+      [1, 2, 3, 4],
+      [2, 3, 4, 5],
+      [3, 4, 5, 6],
     ];
-    return suites.some(suite => suite.every(num => compte[num] >= 1));
-}
+    return suites.some((suite) => suite.every((num) => compte[num] >= 1));
+  }
 
-function isGrandeSuite(compte) {
+  function isGrandeSuite(compte) {
     const suites = [
-        [1, 2, 3, 4, 5],
-        [2, 3, 4, 5, 6]
+      [1, 2, 3, 4, 5],
+      [2, 3, 4, 5, 6],
     ];
-    return suites.some(suite => suite.every(num => compte[num] >= 1));
-}
+    return suites.some((suite) => suite.every((num) => compte[num] >= 1));
+  }
 
-function addScore(valeur) {
+  function addScore(valeur) {
     let total = valeur * compte[valeur];
     scoreBoard.recordScore(valeur, total);
-}
-
-console.log(`${player.name}'s lower section score: ${scoreBoard.totalLowerSection()}`); // Display lower section total
-console.log(`${player.name}'s upper section score: ${scoreBoard.totalUpperSection()}`); // Display upper section total
+  }
+});
+console.log(
+  `${player.name}'s lower section score: ${scoreBoard.totalLowerSection()}`
+); // Display lower section total
+console.log(
+  `${player.name}'s upper section score: ${scoreBoard.totalUpperSection()}`
+); // Display upper section total
 console.log(`${player.name}'s total score: ${scoreBoard.totalScore()}`); // Display total score
 
 game.nextTurn();
