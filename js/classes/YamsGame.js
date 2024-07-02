@@ -1,19 +1,20 @@
-import Die from './Die.js';
-import Player from './Player.js';
+import Dice from './de.js';
+import Player from './player.js';
+import ScoreBoard from './scoreBoard.js';
 
 class YamsGame {
     constructor(playerNames) {
         this.players = playerNames.map(name => new Player(name));
-        this.dice = Array.from({ length: 5 }, () => new Die());
+        this.dice = Array.from({ length: 5 }, () => new Dice());
         this.currentTurn = 0;
     }
 
     rollDice() {
-        this.dice.forEach(die => die.roll());
+        this.dice.forEach(die => die.throw());
     }
 
     displayDice() {
-        return this.dice.map(die => die.value);
+        return this.dice.map(die => die.valeur);
     }
 
     currentPlayer() {
@@ -23,6 +24,8 @@ class YamsGame {
     nextTurn() {
         this.currentTurn++;
     }
+
+    
 }
 
 export default YamsGame;

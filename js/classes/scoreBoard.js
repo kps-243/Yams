@@ -1,5 +1,6 @@
+
 class ScoreBoard {
-    constructor() {
+    constructor(player) {
         this.scores = {
             ones: null,
             twos: null,
@@ -7,12 +8,12 @@ class ScoreBoard {
             fours: null,
             fives: null,
             sixes: null,
-            threeOfAKind: null,
-            fourOfAKind: null,
-            fullHouse: null,
+            brelan: null,
+            square: null,
+            full: null,
             smallStraight: null,
             largeStraight: null,
-            yahtzee: null,
+            yams: null,
             chance: null
         };
     }
@@ -31,7 +32,7 @@ class ScoreBoard {
     }
 
     totalLowerSection() {
-        const lowerCategories = ['threeOfAKind', 'fourOfAKind', 'fullHouse', 'smallStraight', 'largeStraight', 'yahtzee', 'chance'];
+        const lowerCategories = ['brelan', 'square', 'full', 'smallStraight', 'largeStraight', 'yams', 'chance'];
         return lowerCategories.reduce((total, category) => total + (this.scores[category] || 0), 0);
     }
 
