@@ -1,54 +1,43 @@
 class Dice {
   constructor() {
-    this.valeur = this.throw;
+    this.locked = false;
+    this.valeur = this.throw();
     this.imageElement = document.createElement("img");
-    this.imageElement.id = "diceImage";
-    this.imageElement.src = "../image/dice1.png";
+    this.imageElement.classList.add("diceImage");
+    this.imageElement.src = `../image/dice${this.valeur}.png`;
     this.imageElement.alt = "Dice";
     this.imageElement.width = 300;
     this.imageElement.height = 200;
+
+    this.imageElement.addEventListener("click", () => {
+      this.toggleLock();
+    });
 
     document.querySelector(".dices").appendChild(this.imageElement);
   }
 
   throw() {
-    const result = Math.floor(Math.random() * 6) + 1;
-    return result;
+    if (!this.locked) {
+    let valeur =  Math.floor(Math.random() * 6) + 1;
+    this.updateDiceImage(valeur);
+    this.valeur = valeur;
+    }
   }
+
   updateDiceImage(value) {
+    console.log(this.imageElement);
     this.imageElement.src = `../image/dice${value}.png`;
   }
-  // updateDiceImage(result) {
-  //   // Sélectionner toutes les balises img qui sont enfants d'un élément avec la classe "dices"
-  //   var diceImageAll = document.querySelectorAll(".dices img");
 
-  //   //var diceImage = document.getElementById("diceImage");
-
-  //   diceImageAll.forEach((diceImage, index) => {
-  //     diceImage.src = `../image/dice${result}.png`;
-  //   });
-
-  //   //diceImage.src = `../image/dice${result}.png`;
-  // }
+  toggleLock() {
+    this.locked = !this.locked;
+    if (this.locked) {
+      this.imageElement.classList.add("locked");
+    } else {
+      this.imageElement.classList.remove("locked");
+    }
+  }
 }
 
-var dice = new Dice();
-var dice2 = new Dice();
-//document.getElementById("rollButton").addEventListener("click");
-
-document.getElementById("rollButton").addEventListener("click", () => {
-  const value = dice.throw();
-  const value2 = dice2.throw();
-  dice.updateDiceImage(value);
-  dice2.updateDiceImage(value2);
-  console.log(value);
-});
-
-//function throwDice() {
-
-//var resulatDice = dice.throw();
-//console.log(resulatDice);
-// var changeimage = dice.updateDiceImage(resulatDice);
-//}
 
 export default Dice;
