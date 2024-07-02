@@ -1,0 +1,431 @@
+/******************************
+        CSS GLOBAL
+******************************/
+body {
+  font-family: Montserrat, sans-serif;
+}
+
+html {
+  font-family: sans-serif; /* 1 */
+  line-height: 1.15; /* 2 */
+  -ms-text-size-adjust: 100%; /* 3 */
+  -webkit-text-size-adjust: 100%; /* 3 */
+}
+
+/* Sections
+   ========================================================================== */
+
+/**
+ * Remove the margin in all browsers (opinionated).
+ */
+
+body {
+  margin: 0;
+}
+
+/**
+ * Add the correct display in IE 9-.
+ */
+
+article,
+aside,
+footer,
+header,
+nav,
+section {
+  display: block;
+}
+
+/**
+ * Correct the font size and margin on `h1` elements within `section` and
+ * `article` contexts in Chrome, Firefox, and Safari.
+ */
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+/* Grouping content
+   ========================================================================== */
+
+/**
+ * Add the correct display in IE 9-.
+ * 1. Add the correct display in IE.
+ */
+
+figcaption,
+figure,
+main {
+  /* 1 */
+  display: block;
+}
+
+/**
+ * Add the correct margin in IE 8.
+ */
+
+figure {
+  margin: 1em 40px;
+}
+
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+
+hr {
+  box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 2 */
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+
+pre {
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+
+/* Text-level semantics
+   ========================================================================== */
+
+/**
+ * 1. Remove the gray background on active links in IE 10.
+ * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.
+ */
+
+a {
+  background-color: transparent; /* 1 */
+  -webkit-text-decoration-skip: objects; /* 2 */
+}
+
+ul img {
+  height: 48px;
+}
+/******************************
+        CLASSES GLOBALES
+******************************/
+.btn {
+  background-color: rgb(9, 42, 67);
+  padding: 10px;
+}
+.btn:hover {
+  background-color: rgb(249, 175, 16);
+}
+
+.container {
+  max-width: 1060px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/******************************
+        STYLE PAR SECTION
+******************************/
+header {
+  background-image: linear-gradient(
+      to top right,
+      rgba(249, 175, 16, 0.2),
+      rgba(249, 175, 16, 0.2)
+    ),
+    url(../img/fond1.jpg);
+  background-size: cover;
+  background-position: center top;
+  background-attachment: fixed;
+  color: #ffffff;
+  padding: 20px;
+}
+header nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+header nav #burger {
+  display: none;
+}
+header nav img {
+  height: 60px;
+}
+header nav ul {
+  display: flex;
+}
+header nav ul li {
+  margin-left: 20px;
+}
+header div {
+  text-align: center;
+  margin: 150px 0 250px;
+}
+header h1 {
+  font-size: 80px;
+  font-weight: 900;
+  font-style: italic;
+  text-transform: uppercase;
+  margin: 0;
+  line-height: 100%;
+}
+header h2 {
+  font-size: 20px;
+}
+
+footer {
+  background: black;
+  border-top: 10px solid rgb(0, 132, 39);
+  color: white;
+  padding: 20px 0;
+}
+
+footer > div {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+footer article {
+  width: 25%;
+  text-align: right;
+}
+footer article img {
+  height: 60px;
+}
+footer article a {
+  margin: 0 5px;
+  font-size: 20px;
+}
+
+footer form {
+  width: 45%;
+  background: white;
+  color: black;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 50px;
+  margin-top: -100px;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 -3px 10px rgba(249, 175, 16, 0.2);
+}
+footer form h2 {
+  text-transform: uppercase;
+}
+
+footer form input:not([type="submit"]) {
+  width: 100%;
+  margin: 20px 0;
+  border: none;
+  border-bottom: 1px solid black;
+  padding: 5px;
+}
+footer form ::placeholder {
+  color: black;
+  font-size: 13px;
+}
+footer form input[type="submit"] {
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+footer ul {
+  width: 25%;
+}
+
+footer ul li {
+  display: flex;
+  align-items: baseline;
+}
+footer ul li i {
+  color: rgb(249, 175, 16);
+  margin-right: 15px;
+}
+footer ul li h3 {
+  text-transform: uppercase;
+  font-size: 13px;
+}
+
+/******************************
+        RESPONSIVE
+******************************/
+
+@media (min-width: 768px) and (max-width: 990px) {
+  main #services li:nth-of-type(odd) {
+    background-color: white;
+  }
+  main #services li {
+    width: 50%;
+  }
+  main #services li:nth-of-type(2),
+  main #services li:nth-of-type(3),
+  main #services li:nth-of-type(6) {
+    background-color: rgb(235, 235, 235);
+  }
+}
+
+@media (max-width: 767px) {
+  .container {
+    width: 90%;
+  }
+
+  /*********** menu mobile**********/
+  header nav {
+    background: rgb(249, 175, 16);
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+    padding: 10px 20px;
+  }
+  header nav ul {
+    height: 0;
+    overflow: hidden;
+    display: block;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 60px;
+    background: rgb(249, 175, 16);
+    padding: 10px;
+  }
+  header nav ul li {
+    width: 100%;
+    padding: 20px;
+    margin-left: 0;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  header nav #burger {
+    display: block;
+    appearance: none;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+  }
+  header nav #burger::before {
+    content: "\f0c9";
+  }
+  header nav #burger:checked::before {
+    content: "\f00d";
+  }
+  header nav #burger:checked + ul {
+    height: auto;
+  }
+
+  /*********************************/
+
+  main #fitclub {
+    background: black;
+    padding: 80px;
+  }
+  main #fitclub article {
+    width: 100%;
+  }
+  main #fitclub article h2 {
+    margin-left: 0;
+  }
+
+  main #objectives ul li {
+    width: 50%;
+  }
+
+  main #programs a {
+    width: 100%;
+  }
+
+  main #services li {
+    width: 100%;
+  }
+
+  footer > div > * {
+    width: 100%;
+  }
+
+  footer article {
+    margin: 50px 0;
+    text-align: center;
+  }
+
+  footer form {
+    order: -1;
+  }
+}
+
+/* Début card */
+/* Code CSS pour les cartes */
+
+.card-hover {
+  width: 360px;
+  height: 500px;
+  margin: 20px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 32px -10px rgba(0, 0, 0, 0.08);
+  border-radius: 80px; /* Arrondir les bords */
+}
+
+.card-hover__link {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translate(-50%, 10%);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  text-decoration: none;
+  color: #f5f3e2;
+  opacity: 0;
+  padding: 10px;
+  transition: all 0.35s;
+}
+
+/* Fin card */
+
+/* STYLE MOBILE */
+@media screen and (max-width: 767px) {
+  #concept h2::before {
+    left: 45px;
+  }
+  #concept h2 {
+    margin-bottom: 90px;
+  }
+  #concept article {
+    padding: 0 20px 20px 85px;
+  }
+}
+
+*:hover {
+  transition: all 0.2s ease 0s;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 1.6rem;
+  line-height: 1.6;
+}
+
+a,
+a:hover,
+a:visited,
+a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
