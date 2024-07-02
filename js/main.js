@@ -25,7 +25,7 @@ var scoreBoard = new ScoreBoard(game);
 
 document
   .getElementById("generate-grid")
-  .addEventListener("click", scoreBoard.generatePlayerInputs);
+  .addEventListener("click", scoreBoard.generatePlayerInputs.bind(scoreBoard));
 
 game.dice.map((de) => de.updateDiceImage);
 

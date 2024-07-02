@@ -53,7 +53,7 @@ class ScoreBoard {
             this.players.push({ name: playerName, scores: {} });
         }
 
-        this.afficheGrid();
+        this.afficheGrid(numberOfPlayers);
     }
     
     generatePlayerInputs() {
@@ -76,14 +76,15 @@ class ScoreBoard {
         startGameButton.textContent = 'Start Game';
         playerInputsContainer.appendChild(startGameButton);
         startGameButton.addEventListener("click", function (){
-            this.startGame(numberOfPlayers);
-        });
+            console.log(this);
+            this.startGame(numberOfPlayers);    
+        }.bind(this));
 
     
     }
 
 
-    afficheGrid() {
+    afficheGrid(numberOfPlayers) {
         const container = document.getElementById('grid-container');
         // Vider le conteneur de la grille avant de générer une nouvelle grille
         container.innerHTML = '';
