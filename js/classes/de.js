@@ -6,4 +6,9 @@ class Dice {
     this.valeur = result;
     return this.valeur;
   }
+  updateDiceImage(result) {
+    var diceImage = document.getElementById("diceImage");
+    diceImage.src = `../image/dice${result}.png`;
+  }
 }
+export default Dice;

@@ -10,7 +10,7 @@
 <body>
     <h1>Jouer aux Dés</h1>
     <div class="dices">
-        <img src="" alt="">
+        <img id="diceImage" src="../image/dice1.png" alt="" width="300" height="200">
     </div>
     <button id="rollButton">Lancer le dé</button>
 </body>
@@ -26,6 +26,8 @@
         var dice = new Dice();
         var resulatDice = dice.throw();
         console.log(resulatDice);
+        var changeimage = dice.updateDiceImage(resulatDice);
     }
+
 
 </script>
