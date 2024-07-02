@@ -11,23 +11,14 @@
     <h1>Jouer aux Dés</h1>
     <div class="dices">
         <img id="diceImage" src="../image/dice1.png" alt="" width="300" height="200">
+        <img src="../image/dice1.png" alt="" width="300" height="200">
+        <img src="../image/dice1.png" alt="" width="300" height="200">
+        <img src="../image/dice1.png" alt="" width="300" height="200">
+        <img src="../image/dice1.png" alt="" width="300" height="200">
     </div>
     <button id="rollButton">Lancer le dé</button>
 </body>
 
 </html>
 
-<script src="../js/classes/de.js"></script>
-
-<script>
-    document.getElementById("rollButton").addEventListener('click', throwDice);
-
-    function throwDice() {
-        var dice = new Dice();
-        var resulatDice = dice.throw();
-        console.log(resulatDice);
-        var changeimage = dice.updateDiceImage(resulatDice);
-    }
-
-
-</script>
+<script type="module" src="../js/classes/de.js"></script>
