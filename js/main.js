@@ -20,11 +20,15 @@ const buttons = {
     six: document.querySelector('#buttonSix')
 };
 
-
 const game = new YamsGame(["Alice", "Bob"]);
 
 
-game.rollDice();
+document.getElementById("rollButton").addEventListener("click", () => {
+    game.rollDice();
+});
+
+
+
 
 game.dice.map(de => de.updateDiceImage)
 

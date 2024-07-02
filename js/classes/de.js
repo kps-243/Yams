@@ -9,7 +9,6 @@ class Dice {
     this.imageElement.width = 300;
     this.imageElement.height = 200;
 
-    // Add click event listener to toggle lock state
     this.imageElement.addEventListener("click", () => {
       this.toggleLock();
     });
@@ -18,10 +17,15 @@ class Dice {
   }
 
   throw() {
-    return Math.floor(Math.random() * 6) + 1;
+    if (!this.locked) {
+    let valeur =  Math.floor(Math.random() * 6) + 1;
+    this.updateDiceImage(valeur);
+    this.valeur = valeur;
+    }
   }
 
   updateDiceImage(value) {
+    console.log(this.imageElement);
     this.imageElement.src = `../image/dice${value}.png`;
   }
 
@@ -33,22 +37,7 @@ class Dice {
       this.imageElement.classList.remove("locked");
     }
   }
-
-  rollIfNotLocked() {
-    if (!this.locked) {
-      const newValue = this.throw();
-      this.updateDiceImage(newValue);
-      return newValue;
-    }
-  }
 }
 
-const dice1 = new Dice();
-const dice2 = new Dice();
-
-document.getElementById("rollButton").addEventListener("click", () => {
-  dice1.rollIfNotLocked();
-  dice2.rollIfNotLocked();
-});
 
 export default Dice;

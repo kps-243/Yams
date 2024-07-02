@@ -1,3 +1,12 @@
-button {
+.button {
     display: none;
 }
+
+.diceImage {
+    cursor: pointer;
+    border: 2px solid black;
+  }
+  
+  .diceImage.locked {
+    border-color: red;
+  }
