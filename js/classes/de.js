@@ -1,54 +1,54 @@
 class Dice {
   constructor() {
-    this.valeur = this.throw;
+    this.locked = false;
+    this.valeur = this.throw();
     this.imageElement = document.createElement("img");
-    this.imageElement.id = "diceImage";
-    this.imageElement.src = "../image/dice1.png";
+    this.imageElement.classList.add("diceImage");
+    this.imageElement.src = `../image/dice${this.valeur}.png`;
     this.imageElement.alt = "Dice";
     this.imageElement.width = 300;
     this.imageElement.height = 200;
+
+    // Add click event listener to toggle lock state
+    this.imageElement.addEventListener("click", () => {
+      this.toggleLock();
+    });
 
     document.querySelector(".dices").appendChild(this.imageElement);
   }
 
   throw() {
-    const result = Math.floor(Math.random() * 6) + 1;
-    return result;
+    return Math.floor(Math.random() * 6) + 1;
   }
+
   updateDiceImage(value) {
     this.imageElement.src = `../image/dice${value}.png`;
   }
-  // updateDiceImage(result) {
-  //   // Sélectionner toutes les balises img qui sont enfants d'un élément avec la classe "dices"
-  //   var diceImageAll = document.querySelectorAll(".dices img");
 
-  //   //var diceImage = document.getElementById("diceImage");
+  toggleLock() {
+    this.locked = !this.locked;
+    if (this.locked) {
+      this.imageElement.classList.add("locked");
+    } else {
+      this.imageElement.classList.remove("locked");
+    }
+  }
 
-  //   diceImageAll.forEach((diceImage, index) => {
-  //     diceImage.src = `../image/dice${result}.png`;
-  //   });
-
-  //   //diceImage.src = `../image/dice${result}.png`;
-  // }
+  rollIfNotLocked() {
+    if (!this.locked) {
+      const newValue = this.throw();
+      this.updateDiceImage(newValue);
+      return newValue;
+    }
+  }
 }
 
-var dice = new Dice();
-var dice2 = new Dice();
-//document.getElementById("rollButton").addEventListener("click");
+const dice1 = new Dice();
+const dice2 = new Dice();
 
 document.getElementById("rollButton").addEventListener("click", () => {
-  const value = dice.throw();
-  const value2 = dice2.throw();
-  dice.updateDiceImage(value);
-  dice2.updateDiceImage(value2);
-  console.log(value);
+  dice1.rollIfNotLocked();
+  dice2.rollIfNotLocked();
 });
-
-//function throwDice() {
-
-//var resulatDice = dice.throw();
-//console.log(resulatDice);
-// var changeimage = dice.updateDiceImage(resulatDice);
-//}
 
 export default Dice;
