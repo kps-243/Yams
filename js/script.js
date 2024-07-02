@@ -19,7 +19,7 @@ class Die {
     }
 
     reset() {
-        this.value = 1;
+        this.value = 0;
         this.locked = false;
     }
 }
@@ -173,7 +173,6 @@ class YamsGame {
     playRound() {
         this.rolls = 0;
         this.resetDice();
-        this.rollDice();
 
         const rollButton = document.getElementById('rollButton');
 
