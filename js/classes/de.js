@@ -5,12 +5,18 @@ class Dice {
     this.valeur = result;
     return this.valeur;
   }
+
   updateDiceImage(result) {
     // Sélectionner toutes les balises img qui sont enfants d'un élément avec la classe "dices"
-    var images = document.querySelectorAll(".dices img");
-    console.log(images);
-    var diceImage = document.getElementById("diceImage");
-    diceImage.src = `../image/dice${result}.png`;
+    var diceImageAll = document.querySelectorAll(".dices img");
+
+    //var diceImage = document.getElementById("diceImage");
+
+    diceImageAll.forEach((diceImage, index) => {
+      diceImage.src = `../image/dice${result}.png`;
+    });
+
+    //diceImage.src = `../image/dice${result}.png`;
   }
 }
 
