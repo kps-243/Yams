@@ -2,18 +2,18 @@ class Dice {
   constructor() {
     this.locked = false;
     this.valeur = this.throw();
-    this.imageElement = document.createElement("img");
-    this.imageElement.classList.add("diceImage");
-    this.imageElement.src = `../image/dice${this.valeur}.png`;
-    this.imageElement.alt = "Dice";
-    this.imageElement.width = 300;
-    this.imageElement.height = 200;
+    // this.imageElement = document.createElement("img");
+    // this.imageElement.classList.add("diceImage");
+    // this.imageElement.src = `../image/dice${this.valeur}.png`;
+    // this.imageElement.alt = "Dice";
+    // this.imageElement.width = 300;
+    // this.imageElement.height = 200;
 
-    this.imageElement.addEventListener("click", () => {
-      this.toggleLock();
-    });
+    // this.imageElement.addEventListener("click", () => {
+    //   this.toggleLock();
+    // });
 
-    document.querySelector(".dices").appendChild(this.imageElement);
+    // document.querySelector(".dices").appendChild(this.imageElement);
   }
 
   throw() {
@@ -25,8 +25,8 @@ class Dice {
   }
 
   updateDiceImage(value) {
-    console.log(this.imageElement);
-    this.imageElement.src = `../image/dice${value}.png`;
+  //   console.log(this.imageElement);
+  //   this.imageElement.src = `../image/dice${value}.png`;
   }
 
   toggleLock() {

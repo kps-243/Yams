@@ -20,13 +20,15 @@ const buttons = {
     six: document.querySelector('#buttonSix')
 };
 
-const game = new YamsGame(["Alice", "Bob"]);
+var game = new YamsGame(["Alice", "Bob"]);
+var scoreBoard = new ScoreBoard(game);
 
 
-document.getElementById("rollButton").addEventListener("click", () => {
-    game.rollDice();
-});
+// document.getElementById("rollButton").addEventListener("click", () => {
+//     game.rollDice();
+// });
 
+document.getElementById('generate-grid').addEventListener("click", scoreBoard.afficheGrid)
 
 
 
@@ -38,7 +40,6 @@ const player = game.currentPlayer();
 console.log(`It's ${player.name}'s turn`);
 
 // Example of recording a score
-const scoreBoard = new ScoreBoard;
 
 let valeur = game.dice.reduce((acc, de) => acc + de.valeur, 0);
 
