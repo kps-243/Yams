@@ -19,13 +19,14 @@ const buttons = {
   six: document.querySelector("#buttonSix"),
 };
 
-var game = new YamsGame(["Alice", "Bob"]);
 var scoreBoard = new ScoreBoard(game);
 
 
 document
   .getElementById("generate-grid")
   .addEventListener("click", scoreBoard.generatePlayerInputs.bind(scoreBoard));
+
+var game = new YamsGame(["Alice", "Bob"]);
 
 game.dice.map((de) => de.updateDiceImage);
 
@@ -46,6 +47,8 @@ document.getElementById("rollButton").addEventListener("click", () => {
 
   const valeurs = game.dice.map((de) => de.valeur);
   const compte = {};
+
+
 
   valeurs.forEach((valeur) => {
     if (compte[valeur]) {
@@ -193,7 +196,7 @@ document.getElementById("rollButton").addEventListener("click", () => {
     for (let valeur in compte) {
       total += valeur * compte[valeur];
     }
-    scoreBoard.recordScore("chance", total);
+    scoreBoard.recordScore("chance", total, game.players.indexOf(player));
   }
 
   function isFullHouse(compte) {
@@ -225,7 +228,7 @@ document.getElementById("rollButton").addEventListener("click", () => {
 
   function addScore(valeur) {
     let total = valeur * compte[valeur];
-    scoreBoard.recordScore(valeur, total);
+    scoreBoard.recordScore(valeur, total, player);
   }
 });
 console.log(
