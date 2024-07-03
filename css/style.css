@@ -103,18 +103,15 @@ a {
   -webkit-text-decoration-skip: objects; /* 2 */
 }
 
-ul img {
-  height: 48px;
-}
 /******************************
         CLASSES GLOBALES
 ******************************/
-.btn {
+.btnf {
   background-color: rgb(9, 42, 67);
   padding: 10px;
 }
-.btn:hover {
-  background-color: rgb(249, 175, 16);
+.btnf:hover {
+  background-color: rgb(0, 132, 39);
 }
 
 .container {
@@ -126,57 +123,14 @@ ul img {
 /******************************
         STYLE PAR SECTION
 ******************************/
-header {
-  background-image: linear-gradient(
-      to top right,
-      rgba(249, 175, 16, 0.2),
-      rgba(249, 175, 16, 0.2)
-    ),
-    url(../img/fond1.jpg);
-  background-size: cover;
-  background-position: center top;
-  background-attachment: fixed;
-  color: #ffffff;
-  padding: 20px;
-}
-header nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-header nav #burger {
-  display: none;
-}
-header nav img {
-  height: 60px;
-}
-header nav ul {
-  display: flex;
-}
-header nav ul li {
-  margin-left: 20px;
-}
-header div {
-  text-align: center;
-  margin: 150px 0 250px;
-}
-header h1 {
-  font-size: 80px;
-  font-weight: 900;
-  font-style: italic;
-  text-transform: uppercase;
-  margin: 0;
-  line-height: 100%;
-}
-header h2 {
-  font-size: 20px;
-}
 
 footer {
   background: black;
   border-top: 10px solid rgb(0, 132, 39);
   color: white;
   padding: 20px 0;
+  position: relative;
+  z-index: 100;
 }
 
 footer > div {
@@ -187,11 +141,36 @@ footer > div {
 
 footer article {
   width: 25%;
-  text-align: right;
+  text-align: center; /* Centrer le contenu horizontalement */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centrer l'image horizontalement */
 }
+
 footer article img {
   height: 60px;
+  margin: 0 auto; /* Centrer l'image horizontalement */
 }
+
+footer article {
+  width: 25%;
+  text-align: left; /* Aligne le texte à gauche */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centre horizontalement l'image */
+}
+
+footer article img {
+  height: 60px;
+  margin-bottom: 10px; /* Espace entre l'image et le texte */
+}
+
+footer article p,
+footer article a {
+  text-align: left; /* Assure que le texte et les liens sont alignés à gauche */
+  width: 100%; /* Prend toute la largeur du parent */
+}
+
 footer article a {
   margin: 0 5px;
   font-size: 20px;
@@ -209,7 +188,7 @@ footer form {
   margin-top: -100px;
   position: relative;
   z-index: 1;
-  box-shadow: 0 -3px 10px rgba(249, 175, 16, 0.2);
+  box-shadow: 0 -3px 10px rgba(0, 132, 39, 0.2);
 }
 footer form h2 {
   text-transform: uppercase;
@@ -231,23 +210,6 @@ footer form input[type="submit"] {
   border: none;
   cursor: pointer;
   margin-top: 20px;
-}
-
-footer ul {
-  width: 25%;
-}
-
-footer ul li {
-  display: flex;
-  align-items: baseline;
-}
-footer ul li i {
-  color: rgb(249, 175, 16);
-  margin-right: 15px;
-}
-footer ul li h3 {
-  text-transform: uppercase;
-  font-size: 13px;
 }
 
 /******************************
@@ -272,55 +234,6 @@ footer ul li h3 {
   .container {
     width: 90%;
   }
-
-  /*********** menu mobile**********/
-  header nav {
-    background: rgb(249, 175, 16);
-    position: fixed;
-    width: 100%;
-    left: 0;
-    top: 0;
-    padding: 10px 20px;
-  }
-  header nav ul {
-    height: 0;
-    overflow: hidden;
-    display: block;
-    position: absolute;
-    width: 100%;
-    left: 0;
-    top: 60px;
-    background: rgb(249, 175, 16);
-    padding: 10px;
-  }
-  header nav ul li {
-    width: 100%;
-    padding: 20px;
-    margin-left: 0;
-    text-transform: uppercase;
-    text-align: center;
-  }
-
-  header nav #burger {
-    display: block;
-    appearance: none;
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900;
-    color: white;
-    font-size: 30px;
-    cursor: pointer;
-  }
-  header nav #burger::before {
-    content: "\f0c9";
-  }
-  header nav #burger:checked::before {
-    content: "\f00d";
-  }
-  header nav #burger:checked + ul {
-    height: auto;
-  }
-
-  /*********************************/
 
   main #fitclub {
     background: black;
@@ -360,34 +273,6 @@ footer ul li h3 {
 }
 
 /* Début card */
-/* Code CSS pour les cartes */
-
-.card-hover {
-  width: 360px;
-  height: 500px;
-  margin: 20px;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 0 32px -10px rgba(0, 0, 0, 0.08);
-  border-radius: 80px; /* Arrondir les bords */
-}
-
-.card-hover__link {
-  position: absolute;
-  bottom: 1rem;
-  left: 50%;
-  transform: translate(-50%, 10%);
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  text-decoration: none;
-  color: #f5f3e2;
-  opacity: 0;
-  padding: 10px;
-  transition: all 0.35s;
-}
-
-/* Fin card */
 
 /* STYLE MOBILE */
 @media screen and (max-width: 767px) {
@@ -425,7 +310,320 @@ a:active {
   color: inherit;
 }
 
-ul {
+.boutonm {
+  margin-bottom: 150px;
+}
+
+button {
+  padding: 11px 20px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  border: 0;
+  color: #694625;
+  background: #fff;
+  position: relative;
+  margin: 20px;
+  transition: all 0.25s;
+}
+
+button::after,
+button::before {
+  border: 3px solid #694625;
+  content: "";
+  position: absolute;
+  border-radius: inherit;
+  width: 100%;
+  height: 100%;
+  left: 0px;
+  bottom: 0px;
+  transition: all 0.25s;
+}
+
+button:hover::after {
+  transform: translate(-5px, -5px);
+}
+
+button:hover::before {
+  transform: translate(5px, 5px);
+}
+
+@keyframes animate {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+    border-radius: 0;
+  }
+  100% {
+    transform: translateY(-1000px) rotate(720deg);
+    opacity: 0;
+    border-radius: 50%;
+  }
+}
+
+.background {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  margin: 0;
   padding: 0;
+  overflow: hidden;
+}
+
+.background li {
+  position: absolute;
+  display: block;
   list-style: none;
+  width: 20px; /* Largeur de l'image */
+  height: 20px; /* Hauteur de l'image */
+  background-image: url("../image/de.png"); /* Chemin vers votre image personnalisée */
+  background-size: contain; /* */
+  background-repeat: no-repeat; /* Empêche la répétition de l'image */
+  animation: animate 19s linear infinite;
+}
+
+.background li:nth-child(0) {
+  left: 77%;
+  width: 54px;
+  height: 54px;
+  bottom: -54px;
+  animation-delay: 1s;
+}
+.background li:nth-child(1) {
+  left: 64%;
+  width: 103px;
+  height: 103px;
+  bottom: -103px;
+  animation-delay: 2s;
+}
+.background li:nth-child(13) {
+  left: 90%;
+  width: 103px;
+  height: 103px;
+  bottom: -103px;
+  animation-delay: 3s;
+}
+.background li:nth-child(12) {
+  left: 77%;
+  width: 54px;
+  height: 54px;
+  bottom: -54px;
+  animation-delay: 11s;
+}
+.background li:nth-child(2) {
+  left: 20%;
+  width: 54px;
+  height: 54px;
+  bottom: -54px;
+  animation-delay: 6s;
+}
+.background li:nth-child(3) {
+  left: 37%;
+  width: 76px;
+  height: 76px;
+  bottom: -76px;
+  animation-delay: 6s;
+}
+.background li:nth-child(4) {
+  left: 42%;
+  width: 71px;
+  height: 71px;
+  bottom: -71px;
+  animation-delay: 9s;
+}
+.background li:nth-child(5) {
+  left: 58%;
+  width: 64px;
+  height: 64px;
+  bottom: -64px;
+  animation-delay: 19s;
+}
+.background li:nth-child(6) {
+  left: 70%;
+  width: 69px;
+  height: 69px;
+  bottom: -69px;
+  animation-delay: 6s;
+}
+.background li:nth-child(7) {
+  left: 88%;
+  width: 64px;
+  height: 64px;
+  bottom: -64px;
+  animation-delay: 6s;
+}
+.background li:nth-child(8) {
+  left: 29%;
+  width: 57px;
+  height: 57px;
+  bottom: -57px;
+  animation-delay: 40s;
+}
+.background li:nth-child(9) {
+  left: 59%;
+  width: 101px;
+  height: 101px;
+  bottom: -101px;
+  animation-delay: 35s;
+}
+.background li:nth-child(10) {
+  left: 39%;
+  width: 84px;
+  height: 84px;
+  bottom: -84px;
+  animation-delay: 47s;
+}
+.background li:nth-child(11) {
+  left: 37%;
+  width: 86px;
+  height: 86px;
+  bottom: -86px;
+  animation-delay: 28s;
+}
+
+h1 {
+  margin-top: 40px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.billet {
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.billet p {
+  margin: 5px 0;
+}
+
+.bg {
+  background: #f5f3e2;
+}
+
+.police {
+  font-family: cursive;
+}
+
+.centered-div {
+  width: auto; /* Largeur de ta div */
+  padding: 20px;
+  background-color: #fff;
+  text-align: center; /* Centrer le texte à l'intérieur */
+  border-radius: 8px;
+  margin-bottom: 70px;
+}
+/* Lato font */
+@import url("https://fonts.googleapis.com/css?family=Lato:400,700");
+
+/* color/ui color variables */
+:root {
+  --white: #ececec;
+  --black: #111111;
+  --red1: #50c083;
+  --red2: #008427;
+  --colorPrimary: var(--red1);
+  --colorSecondary: var(--red2);
+}
+
+/* Split button */
+button.btn {
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 700;
+  border: 0;
+  position: relative;
+  letter-spacing: 0.15em;
+  margin: 0 auto;
+  padding: 1rem 2.5rem;
+  background: transparent;
+  outline: none;
+  font-size: 38px;
+  color: var(--black);
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.15s;
+  z-index: 1;
+}
+
+button.btn::after,
+button.btn::before {
+  border: 0;
+  content: "";
+  position: absolute;
+  height: 40%;
+  width: 5%;
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  z-index: -2;
+  border-radius: 50%;
+}
+
+button.btn::before {
+  background-color: var(--colorSecondary);
+  top: -0.75rem;
+  left: 0.5rem;
+  animation: topAnimation 2s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.25s
+    infinite alternate;
+}
+
+button.btn::after {
+  background-color: var(--colorPrimary);
+  top: 3rem;
+  left: 13rem;
+  animation: bottomAnimation 2s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.5s
+    infinite alternate;
+  border-radius: 10px;
+}
+
+button.btn:hover {
+  color: white;
+}
+
+button.btn:hover::before,
+button.btn:hover::after {
+  top: 0;
+  height: 100%;
+  width: 100%;
+  border-radius: 0;
+  animation: none;
+}
+
+button.btn:hover::after {
+  left: 0rem;
+}
+
+button.btn:hover::before {
+  top: 0.5rem;
+  left: 0.35rem;
+}
+
+/* Keyframes */
+@keyframes topAnimation {
+  from {
+    transform: translate(0rem, 0);
+  }
+  to {
+    transform: translate(0rem, 3.5rem);
+  }
+}
+
+@keyframes bottomAnimation {
+  from {
+    transform: translate(-11.5rem, 0);
+  }
+  to {
+    transform: translate(0rem, 0);
+  }
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center; /* Centre horizontalement */
+  align-items: center; /* Centre verticalement (optionnel, si nécessaire) */
+  margin-top: 70px;
+  z-index: 10;
+  position: relative;
 }
