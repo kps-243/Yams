@@ -89,7 +89,6 @@
     </div>
     <div class="controls">
         <button id="rollButton">Lancer les dés</button>
-        <button id="scoreButton">Marquer le score</button>
     </div>
     <div class="scoreboard">
         <table>
@@ -143,7 +142,7 @@
             }
 
             reset() {
-                this.value = 1;
+                this.value = 0;
                 this.locked = false;
             }
         }
@@ -240,6 +239,7 @@
             rollDice() {
                 this.dice.forEach(die => die.roll());
                 this.updateDiceDisplay();
+                this.updateSuggestions();
             }
 
             updateDiceDisplay() {
@@ -298,7 +298,6 @@
                 this.resetDice();
 
                 const rollButton = document.getElementById('rollButton');
-                const scoreButton = document.getElementById('scoreButton');
 
                 rollButton.onclick = () => {
                     if (this.rolls < 3) {
@@ -309,24 +308,6 @@
                         }
                     }
                 };
-
-                scoreButton.onclick = () => {
-                    this.showScorePrompt();
-                };
-            }
-
-            showScorePrompt() {
-                const player = this.players[this.currentPlayerIndex];
-                let category = prompt("Entrez la catégorie pour marquer le score (ou 'zéro' pour marquer 0): ").toLowerCase().replace(/\s+/g, '');
-                if (category === 'zéro') {
-                    category = prompt("Entrez la catégorie à marquer avec 0: ").toLowerCase().replace(/\s+/g, '');
-                    player.addScore(category, 0);
-                } else {
-                    const score = this.calculateScore(category);
-                    player.addScore(category, score);
-                }
-                this.updateScoreboard();
-                this.nextPlayer();
             }
 
             markScore(cell) {
@@ -334,8 +315,7 @@
                 const player = this.players[this.currentPlayerIndex];
                 if (!player.scoreSheet[category]) {
                     const score = this.calculateScore(category);
-                    const zeroScore = confirm("Voulez-vous marquer ce score comme 0 ?");
-                    player.addScore(category, zeroScore ? 0 : score);
+                    player.addScore(category, score);
                     this.updateScoreboard();
                     this.nextPlayer();
                 } else {
@@ -389,7 +369,33 @@
                 const player = this.players[this.currentPlayerIndex];
                 const suggestionsList = document.getElementById('suggestionsList');
                 suggestionsList.innerHTML = '';
-                player.getAvailableCategories().forEach(category => {
+                const availableCategories = player.getAvailableCategories();
+                const counts = this.countDiceValues();
+                const values = this.getDiceValues();
+
+                const possibleCategories = availableCategories.filter(category => {
+                    switch (category) {
+                        case 'as': return true;
+                        case 'deux': return true;
+                        case 'trois': return true;
+                        case 'quatre': return true;
+                        case 'cinq': return true;
+                        case 'six': return true;
+                        case 'brelan': return counts.some(count => count >= 3);
+                        case 'carre': return counts.some(count => count >= 4);
+                        case 'fullHouse': return counts.includes(3) && counts.includes(2);
+                        case 'petiteSuite': return ([0, 1, 2, 3].every(i => counts[i] >= 1) ||
+                                                    [1, 2, 3, 4].every(i => counts[i] >= 1) ||
+                                                    [2, 3, 4, 5].every(i => counts[i] >= 1));
+                        case 'grandeSuite': return ([0, 1, 2, 3, 4].every(i => counts[i] === 1) ||
+                                                    [1, 2, 3, 4, 5].every(i => counts[i] === 1));
+                        case 'yams': return counts.some(count => count === 5);
+                        case 'chance': return true;
+                        default: return false;
+                    }
+                });
+
+                possibleCategories.forEach(category => {
                     const li = document.createElement('li');
                     li.textContent = category;
                     li.onclick = () => {
