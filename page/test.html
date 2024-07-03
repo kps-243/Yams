@@ -368,19 +368,30 @@
             updateSuggestions() {
                 const player = this.players[this.currentPlayerIndex];
                 const suggestionsList = document.getElementById('suggestionsList');
+                        
+                if (!suggestionsList) {
+                    console.error('Element with id "suggestionsList" not found');
+                    return;
+                }
+            
                 suggestionsList.innerHTML = '';
                 const availableCategories = player.getAvailableCategories();
                 const counts = this.countDiceValues();
                 const values = this.getDiceValues();
-
+            
+                // Debugging output
+                console.log('Available Categories:', availableCategories);
+                console.log('Counts:', counts);
+                console.log('Values:', values);
+            
                 const possibleCategories = availableCategories.filter(category => {
                     switch (category) {
-                        case 'as': return true;
-                        case 'deux': return true;
-                        case 'trois': return true;
-                        case 'quatre': return true;
-                        case 'cinq': return true;
-                        case 'six': return true;
+                        case 'as': return values.includes(1);
+                        case 'deux': return values.includes(2);
+                        case 'trois': return values.includes(3);
+                        case 'quatre': return values.includes(4);
+                        case 'cinq': return values.includes(5);
+                        case 'six': return values.includes(6);
                         case 'brelan': return counts.some(count => count >= 3);
                         case 'carre': return counts.some(count => count >= 4);
                         case 'fullHouse': return counts.includes(3) && counts.includes(2);
@@ -394,7 +405,9 @@
                         default: return false;
                     }
                 });
-
+            
+                console.log('Possible Categories:', possibleCategories);
+            
                 possibleCategories.forEach(category => {
                     const li = document.createElement('li');
                     li.textContent = category;
@@ -407,6 +420,7 @@
                     suggestionsList.appendChild(li);
                 });
             }
+
 
             start() {
                 this.playRound();
