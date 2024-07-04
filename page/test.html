@@ -17,22 +17,24 @@
     </script>
 </head>
 
-<body class="bg-gray-100 font-sans">
+<body class="font-sans">
     <header class="container mx-auto mt-5">
-        <nav class="flex justify-between items-center px-6 bg-white shadow-lg rounded-lg">
-            <a href="#" class="py-2">
-                <div class="h-16">
-                    <img src="../image/Logo-yams.webp" alt="Logo - YAMS" class="h-full w-auto object-contain">
+        <nav class="flex justify-between items-center px-12 bg-[#F5F3E2] shadow-lg w-full rounded-[75px]">
+            <a href="" class="py-2">
+                <div class="w-fit h-16 lg:h-24">
+                    <img src="../image/Logo-yams.webp" alt="Logo - YAMS" class="h-full w-fit object-contain">
                 </div>
             </a>
-            <a class="px-4 py-2 bg-red-500 rounded-lg flex items-center text-white hover:bg-white hover:text-red-500 transition-all"
-                href="#">
-                <img src="../image/sitcker-de.webp" alt="" class="w-6 h-6 mr-2">
+            <a class="lg:px-6 px-4 py-2 h-fit bg-red-500 rounded-[75px] flex items-center text-white gap-4 hover:bg-white hover:text-black transition-all"
+                href="">
+                <div class="w-fit h-10">
+                    <img src="../image/sitcker-de.webp" alt="" class="w-fit h-full object-contain">
+                </div>
                 <span>Quitter la partie</span>
             </a>
         </nav>
     </header>
-    <h1 class="text-3xl text-center">Jeu de YAMS</h1>
+    <h1 class="text-3xl text-center mt-10">Jeu de YAMS</h1>
     <main class="container mx-auto flex flex-col lg:flex-row gap-10 mt-10">
 
         <div id="de" class="w-full lg:w-1/2 flex flex-col items-center" style="display: none;">
@@ -91,16 +93,15 @@
         </div>
     </main>
 
-    <section class="container mx-auto flex flex-col gap-5 mt-10">
-
+    <section class="container mx-auto flex flex-col gap-5 mt-10 justify-center items-center">
         <div id="setup" class="flex flex-col gap-4">
             <div class="flex gap-2 items-center">
                 <label for="numPlayers" class="block font-medium">Nombre de joueurs :</label>
                 <input type="number" id="numPlayers" min="1" max="6" class="border px-4 py-2 rounded-lg">
             </div>
-            <div class="flex flex-col gap-2">
+            <div class="flex flex-col gap-4">
                 <div id="playerInputs" style="display:none;" class="flex flex-col gap-2"></div>
-                <div class="flex gap-5">
+                <div class="flex gap-5 justify-end">
                     <button id="setupButton"
                         class="px-6 py-2 bg-red-500 rounded-lg text-white hover:bg-blue-500 transition-all">
                         Configurer les joueurs
