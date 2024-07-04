@@ -83,6 +83,7 @@ class YamsGame {
     this.addDieClickEvents();
     this.updateSuggestions();
     this.setupThreeJS();
+    this.loadSound();
   }
 
   initializeScoreboard() {
@@ -129,6 +130,7 @@ class YamsGame {
 
   rollDice() {
     this.isRolling = true;
+    this.playRollSound();
 
     // Lancer chaque dé
     this.dice.forEach((die) => die.roll());
@@ -430,7 +432,7 @@ class YamsGame {
     ];
 
     // Créer des dés avec des positions espacées
-    const diceGeometry = new THREE.BoxGeometry(1, 1, 1);
+    const diceGeometry = new THREE.BoxGeometry(1.5, 1.5, 1.5); // Augmenter la taille des dés
     this.diceMeshes = [];
 
     const dicePositions = [
@@ -447,13 +449,6 @@ class YamsGame {
       scene.add(dice);
       this.diceMeshes.push(dice);
     });
-
-    // Créer le plateau circulaire
-    const circleGeometry = new THREE.CircleGeometry(7, 32);
-    const circleMaterial = new THREE.MeshBasicMaterial({ color: 0x006400 }); // Vert foncé pour le plateau
-    const circle = new THREE.Mesh(circleGeometry, circleMaterial);
-    circle.rotation.x = -Math.PI / 2;
-    scene.add(circle);
 
     // Positionner la caméra au-dessus du plateau
     camera.position.set(0, 10, 0);
@@ -518,6 +513,16 @@ class YamsGame {
 
     // Rendre la scène
     this.renderer.render(this.scene, this.camera);
+  }
+
+  loadSound() {
+    this.rollSound = new Audio("../sound/roll.mp3"); // Remplacez par le chemin correct de votre fichier son
+  }
+
+  playRollSound() {
+    if (this.rollSound) {
+      this.rollSound.play();
+    }
   }
 }
 
