@@ -1,11 +1,21 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jeu de YAMS</title>
     <link rel="stylesheet" href="../css/styleTest.css">
+    <script type="importmap">
+                {
+                  "imports": {
+                    "three": "https://cdn.jsdelivr.net/npm/three@v0.166.1/build/three.module.js",
+                    "three/addons/": "https://cdn.jsdelivr.net/npm/three@v0.166.1/examples/jsm/"
+                  }
+                }
+            </script>
 </head>
+
 <body>
     <h1>Jeu de YAMS</h1>
     <div id="setup">
@@ -17,12 +27,13 @@
     </div>
     <div id="game" style="display:none;">
         <div id="currentPlayer">Joueur actuel : </div>
-        <div class="dice">
-            <div class="die" id="die0">1</div>
-            <div class="die" id="die1">1</div>
-            <div class="die" id="die2">1</div>
-            <div class="die" id="die3">1</div>
-            <div class="die" id="die4">1</div>
+        <div class="dice" id="threejs-container"></div>
+        <div id="threejs-container">
+            <div class="die" id="die0"></div>
+            <div class="die" id="die1"></div>
+            <div class="die" id="die2"></div>
+            <div class="die" id="die3"></div>
+            <div class="die" id="die4"></div>
         </div>
         <div class="controls">
             <button id="rollButton">Lancer les dés</button>
@@ -58,6 +69,7 @@
         </div>
         <div id="message"></div>
     </div>
-    <script src="../js/script.js"></script>
+    <script type="module" src="../js/script.js"></script>
 </body>
+
 </html>
