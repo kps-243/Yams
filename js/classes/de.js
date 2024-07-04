@@ -1,4 +1,4 @@
-class Dice {
+class Die {
   constructor() {
     this.locked = false;
     this.valeur = 1;
@@ -23,22 +23,22 @@ class Dice {
       let valeur = Math.floor(Math.random() * 6) + 1;
       this.updateDiceImage(valeur);
       this.valeur = valeur;
-      //console.log(`Dice value: ${valeur}`); // Ajoutez ce console.log pour voir la valeur générée
     }
   }
 
   updateDiceImage(value) {
+    //console.log(this.imageElement);
     this.imageElement.src = `../image/dice${value}.png`;
   }
 
   toggleLock() {
     this.locked = !this.locked;
-    if (this.locked) {
-      this.imageElement.classList.add("locked");
-    } else {
-      this.imageElement.classList.remove("locked");
-    }
+  }
+
+  reset() {
+    this.value = 0;
+    this.locked = false;
   }
 }
 
-export default Dice;
+export default Die;
