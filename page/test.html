@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,6 +16,7 @@
         }
     </script>
 </head>
+
 <body>
     <header class="container mx-auto mt-5">
         <nav class="flex justify-between items-center px-12 bg-[#F5F3E2] shadow-lg w-full rounded-[75px]">
@@ -22,13 +24,14 @@
                 <div class="w-fit h-16 lg:h-24">
                     <img src="../image/Logo-yams.webp" alt="Logo - YAMS" class="h-full w-fit object-contain">
                 </div>
-             </a>
-             <a class="lg:px-6 px-4 py-2 h-fit bg-red-500 rounded-[75px] flex items-center text-white gap-4 hover:bg-white hover:text-black transition-all" href="">
+            </a>
+            <a class="lg:px-6 px-4 py-2 h-fit bg-red-500 rounded-[75px] flex items-center text-white gap-4 hover:bg-white hover:text-black transition-all"
+                href="">
                 <div class="w-fit h-10">
                     <img src="../image/sitcker-de.webp" alt="" class="w-fit h-full object-contain">
                 </div>
                 <span>Quitter la partie</span>
-             </a>
+            </a>
         </nav>
     </header>
     <div id="threejs-container"></div>
@@ -45,20 +48,25 @@
             <div class="flex flex-col gap-10 ">
                 <div id="playerInputs" style="display:none;" class=""></div>
                 <div class="flex gap-5">
-                    <button id="setupButton" class=" -mt-2 lg:px-6 px-4 py-2 h-fit bg-red-500 rounded-[75px] flex items-center text-white gap-4 hover:bg-blue-500 transition-all">Configurer les joueurs</button>
-                    <button id="startButton" style="display:none;" class=" -mt-2 lg:px-6 px-4 py-2 h-fit bg-red-500 rounded-[75px] flex items-center text-white gap-4 hover:bg-blue-500 transition-all">Démarrer le jeu</button>
+                    <button id="setupButton"
+                        class=" -mt-2 lg:px-6 px-4 py-2 h-fit bg-red-500 rounded-[75px] flex items-center text-white gap-4 hover:bg-blue-500 transition-all">Configurer
+                        les joueurs</button>
+                    <button id="startButton" style="display:none;"
+                        class=" -mt-2 lg:px-6 px-4 py-2 h-fit bg-red-500 rounded-[75px] flex items-center text-white gap-4 hover:bg-blue-500 transition-all">Démarrer
+                        le jeu</button>
                 </div>
             </div>
         </div>
     </section>
     <div id="game" style="display:none;">
         <div id="currentPlayer">Joueur actuel : </div>
-        <div class="dice">
-            <div class="die" id="die0">1</div>
-            <div class="die" id="die1">1</div>
-            <div class="die" id="die2">1</div>
-            <div class="die" id="die3">1</div>
-            <div class="die" id="die4">1</div>
+        <div class="dice" id="threejs-container"></div>
+        <div id="threejs-container">
+            <div class="die" id="die0"></div>
+            <div class="die" id="die1"></div>
+            <div class="die" id="die2"></div>
+            <div class="die" id="die3"></div>
+            <div class="die" id="die4"></div>
         </div>
         <div class="controls">
             <button id="rollButton">Lancer les dés</button>
@@ -96,4 +104,5 @@
     </div>
     <script type="module" src="../js/script.js"></script>
 </body>
+
 </html>
