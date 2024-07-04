@@ -305,17 +305,17 @@ class YamsGame {
     const possibleCategories = availableCategories.filter((category) => {
       switch (category) {
         case "as":
-          return counts.includes(1);
+          return values.includes(1);
         case "deux":
-          return counts.includes(2);
+          return values.includes(2);
         case "trois":
-          return counts.includes(3);
+          return values.includes(3);
         case "quatre":
-          return counts.includes(4);
+          return values.includes(4);
         case "cinq":
-          return counts.includes(5);
+          return values.includes(5);
         case "six":
-          return counts.includes(6);
+          return values.includes(6);
         case "brelan":
           return counts.some((count) => count >= 3);
         case "carre":
