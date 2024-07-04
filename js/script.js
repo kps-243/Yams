@@ -300,9 +300,12 @@ document.addEventListener('DOMContentLoaded', () => {
             input.type = 'text';
             input.placeholder = `Nom du joueur ${i + 1}`;
             input.id = `player${i}`;
+            input.classList.add('border', 'ml-2');
             playerInputs.appendChild(input);
         }
         document.getElementById('startButton').style.display = 'block';
+        playerInputs.style.display = 'block';
+        document.getElementById('setupButton').style.display = 'none'
     };
 
     document.getElementById('startButton').onclick = () => {
