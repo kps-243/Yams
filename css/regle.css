@@ -1,0 +1,301 @@
+/* Lato font */
+@import url("https://fonts.googleapis.com/css?family=Lato:400,700");
+
+body {
+  font-family: "Lato", sans-serif;
+  background-color: #f8f9fa;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.containert {
+  max-width: 1200px;
+  width: auto;
+  background: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin: auto;
+}
+
+.containert2 {
+  max-width: 1200px;
+  width: auto;
+  border-radius: 8px;
+  margin: auto;
+}
+
+html {
+  font-family: sans-serif; /* 1 */
+  line-height: 1.15; /* 2 */
+  -ms-text-size-adjust: 100%; /* 3 */
+  -webkit-text-size-adjust: 100%; /* 3 */
+}
+
+p {
+  color: #787879;
+}
+
+h1,
+h2,
+h3 {
+  color: #000000;
+  text-align: center;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+table,
+th,
+td {
+  border: 1px solid #ddd;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #f4f4f4;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+footer {
+  background: black;
+  border-top: 10px solid rgb(0, 132, 39);
+  color: white;
+  padding: 20px 0;
+  position: relative;
+  z-index: 100;
+}
+
+footer > div {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+footer article {
+  width: 25%;
+  text-align: center; /* Centrer le contenu horizontalement */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centrer l'image horizontalement */
+}
+
+footer article img {
+  height: 60px;
+  margin: 0 auto; /* Centrer l'image horizontalement */
+}
+
+footer article {
+  width: 25%;
+  text-align: left; /* Aligne le texte à gauche */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centre horizontalement l'image */
+}
+
+footer article img {
+  height: 60px;
+  margin-bottom: 10px; /* Espace entre l'image et le texte */
+}
+
+footer article p,
+footer article a {
+  text-align: left; /* Assure que le texte et les liens sont alignés à gauche */
+  width: 100%; /* Prend toute la largeur du parent */
+}
+
+footer article a {
+  margin: 0 5px;
+  font-size: 20px;
+}
+
+footer form {
+  width: 45%;
+  background: white;
+  color: black;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 50px;
+  margin-top: -100px;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 -3px 10px rgba(0, 132, 39, 0.2);
+}
+footer form h2 {
+  text-transform: uppercase;
+}
+
+footer form input:not([type="submit"]) {
+  width: 100%;
+  margin: 20px 0;
+  border: none;
+  border-bottom: 1px solid black;
+  padding: 5px;
+}
+footer form ::placeholder {
+  color: black;
+  font-size: 13px;
+}
+footer form input[type="submit"] {
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+@media (min-width: 768px) and (max-width: 990px) {
+  main #services li:nth-of-type(odd) {
+    background-color: white;
+  }
+  main #services li {
+    width: 50%;
+  }
+  main #services li:nth-of-type(2),
+  main #services li:nth-of-type(3),
+  main #services li:nth-of-type(6) {
+    background-color: rgb(235, 235, 235);
+  }
+}
+
+@media (max-width: 767px) {
+  .container {
+    width: 90%;
+  }
+
+  footer > div > * {
+    width: 100%;
+  }
+
+  footer article {
+    margin: 50px 0;
+    text-align: center;
+  }
+
+  footer form {
+    order: -1;
+  }
+}
+
+.containerf {
+  max-width: 1060px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btnf {
+  background-color: rgb(9, 42, 67);
+  padding: 10px;
+}
+.btnf:hover {
+  background-color: rgb(0, 132, 39);
+}
+
+.mb {
+  margin-bottom: 50px;
+}
+
+.mb1 {
+  margin-bottom: 20px;
+}
+
+.mt {
+  margin-top: 150px;
+}
+
+.mt1 {
+  margin-top: 20px;
+}
+
+.pt1 {
+  padding-top: 30px;
+}
+
+.cb {
+  color: black;
+  margin-bottom: 15px;
+}
+
+.text {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.text1 {
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.text2 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.justif {
+  text-align: justify;
+}
+
+.decorative-line {
+  border: none;
+  border-top: 1px solid #000; /* Couleur et épaisseur de la ligne */
+  margin: 0 auto; /* Centrer la ligne horizontalement */
+  width: 45%; /* Largeur de la ligne */
+}
+
+.image-section {
+  display: flex;
+  justify-content: space-between; /* Espace équitablement les éléments */
+  margin-top: 20px; /* Marge supérieure pour séparation visuelle */
+}
+
+.image-container {
+  text-align: center; /* Centre les éléments à l'intérieur de chaque div */
+  flex-basis: 30%; /* Largeur de chaque élément, ajustable selon vos besoins */
+}
+
+.image-container img {
+  max-width: 100%; /* Pour s'assurer que les images ne dépassent pas de leur contenant */
+  display: block; /* Pour centrer correctement */
+  margin: 0 auto; /* Pour centrer horizontalement l'image */
+}
+
+.image-container p {
+  margin-top: 10px; /* Marge supérieure entre l'image et le paragraphe */
+}
+
+.contenut {
+  margin: 50px;
+  text-align: justify;
+}
+
+.image-class {
+  width: 50px; /* Adjust the size as needed */
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.text-class {
+  text-align: center;
+}
+
+.mtb {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}

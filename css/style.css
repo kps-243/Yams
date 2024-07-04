@@ -54,50 +54,6 @@ h1 {
  * 1. Add the correct display in IE.
  */
 
-figcaption,
-figure,
-main {
-  /* 1 */
-  display: block;
-}
-
-/**
- * Add the correct margin in IE 8.
- */
-
-figure {
-  margin: 1em 40px;
-}
-
-/**
- * 1. Add the correct box sizing in Firefox.
- * 2. Show the overflow in Edge and IE.
- */
-
-hr {
-  box-sizing: content-box; /* 1 */
-  height: 0; /* 1 */
-  overflow: visible; /* 2 */
-}
-
-/**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd `em` font sizing in all browsers.
- */
-
-pre {
-  font-family: monospace, monospace; /* 1 */
-  font-size: 1em; /* 2 */
-}
-
-/* Text-level semantics
-   ========================================================================== */
-
-/**
- * 1. Remove the gray background on active links in IE 10.
- * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.
- */
-
 a {
   background-color: transparent; /* 1 */
   -webkit-text-decoration-skip: objects; /* 2 */
@@ -125,12 +81,12 @@ a {
 ******************************/
 
 footer {
+  position: relative;
   background: black;
   border-top: 10px solid rgb(0, 132, 39);
   color: white;
   padding: 20px 0;
-  position: relative;
-  z-index: 100;
+  z-index: 10;
 }
 
 footer > div {
@@ -186,8 +142,6 @@ footer form {
   align-items: center;
   padding: 30px 50px;
   margin-top: -100px;
-  position: relative;
-  z-index: 1;
   box-shadow: 0 -3px 10px rgba(0, 132, 39, 0.2);
 }
 footer form h2 {
@@ -235,29 +189,6 @@ footer form input[type="submit"] {
     width: 90%;
   }
 
-  main #fitclub {
-    background: black;
-    padding: 80px;
-  }
-  main #fitclub article {
-    width: 100%;
-  }
-  main #fitclub article h2 {
-    margin-left: 0;
-  }
-
-  main #objectives ul li {
-    width: 50%;
-  }
-
-  main #programs a {
-    width: 100%;
-  }
-
-  main #services li {
-    width: 100%;
-  }
-
   footer > div > * {
     width: 100%;
   }
@@ -271,8 +202,6 @@ footer form input[type="submit"] {
     order: -1;
   }
 }
-
-/* Début card */
 
 /* STYLE MOBILE */
 @media screen and (max-width: 767px) {
@@ -314,7 +243,7 @@ a:active {
   margin-bottom: 150px;
 }
 
-button {
+a {
   padding: 11px 20px;
   font-size: 1.5rem;
   cursor: pointer;
@@ -326,8 +255,8 @@ button {
   transition: all 0.25s;
 }
 
-button::after,
-button::before {
+a::after,
+a::before {
   border: 3px solid #694625;
   content: "";
   position: absolute;
@@ -339,11 +268,11 @@ button::before {
   transition: all 0.25s;
 }
 
-button:hover::after {
+a:hover::after {
   transform: translate(-5px, -5px);
 }
 
-button:hover::before {
+a:hover::before {
   transform: translate(5px, 5px);
 }
 
@@ -361,7 +290,7 @@ button:hover::before {
 }
 
 .background {
-  position: absolute;
+  position: fixed;
   width: 100vw;
   height: 100vh;
   top: 0;
@@ -513,10 +442,9 @@ ul {
 .centered-div {
   width: auto; /* Largeur de ta div */
   padding: 20px;
-  background-color: #fff;
+  background-color: transparent;
   text-align: center; /* Centrer le texte à l'intérieur */
   border-radius: 8px;
-  margin-bottom: 70px;
 }
 /* Lato font */
 @import url("https://fonts.googleapis.com/css?family=Lato:400,700");
@@ -532,10 +460,11 @@ ul {
 }
 
 /* Split button */
-button.btn {
+a.btn {
   text-transform: uppercase;
   text-decoration: none;
-  font-weight: 700;
+  font-weight: 500;
+  font-family: Arial, Helvetica, sans-serif;
   border: 0;
   position: relative;
   letter-spacing: 0.15em;
@@ -549,8 +478,8 @@ button.btn {
   z-index: 1;
 }
 
-button.btn::after,
-button.btn::before {
+a.btn::after,
+a.btn::before {
   border: 0;
   content: "";
   position: absolute;
@@ -561,7 +490,7 @@ button.btn::before {
   border-radius: 50%;
 }
 
-button.btn::before {
+a.btn::before {
   background-color: var(--colorSecondary);
   top: -0.75rem;
   left: 0.5rem;
@@ -569,7 +498,7 @@ button.btn::before {
     infinite alternate;
 }
 
-button.btn::after {
+a.btn::after {
   background-color: var(--colorPrimary);
   top: 3rem;
   left: 13rem;
@@ -578,12 +507,12 @@ button.btn::after {
   border-radius: 10px;
 }
 
-button.btn:hover {
+a.btn:hover {
   color: white;
 }
 
-button.btn:hover::before,
-button.btn:hover::after {
+a.btn:hover::before,
+a.btn:hover::after {
   top: 0;
   height: 100%;
   width: 100%;
@@ -591,11 +520,11 @@ button.btn:hover::after {
   animation: none;
 }
 
-button.btn:hover::after {
+a.btn:hover::after {
   left: 0rem;
 }
 
-button.btn:hover::before {
+a.btn:hover::before {
   top: 0.5rem;
   left: 0.35rem;
 }
@@ -626,4 +555,12 @@ button.btn:hover::before {
   margin-top: 70px;
   z-index: 10;
   position: relative;
+}
+
+.mb1 {
+  margin-bottom: 300px;
+}
+
+.mt1 {
+  margin-top: 50px;
 }

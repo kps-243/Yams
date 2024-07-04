@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Règles</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../css/regle.css   ">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="icon" type="image/png" href="../image/Logo.webp" />
+</head>
+
+<body>
+
+    <div>
+        <header class="containert2 mx-auto mt-5 mb animate__animated animate__fadeInDown">
+            <nav class="flex justify-between items-center px-12 bg-[#F5F3E2] shadow-lg w-full rounded-[75px]">
+                <a href="../index.html" class="py-2">
+                    <div class="w-fit h-16 lg:h-24">
+                        <img src="../image/Logo-yams.webp" alt="Logo - YAMS" class="h-full w-fit object-contain">
+                    </div>
+                </a>
+                <a class="lg:px-6 px-4 py-2 h-fit bg-green-500 rounded-[75px] flex items-center text-white gap-4 hover:bg-white hover:text-black transition-all"
+                    href="jeu.html">
+                    <div class="w-fit h-10">
+                        <img src="../image/sitcker-de.webp" alt="" class="w-fit h-full object-contain">
+                    </div>
+                    <span>Nouvelle partie</span>
+                </a>
+            </nav>
+        </header>
+
+        <div class="containert animate__animated animate__fadeIn animate__delay-1s">
+            <h1 class="text1 mb1 pt1">Règles du Yams</h1>
+
+            <section>
+                <hr class="decorative-line">
+                <h2 class="text">Déroulement d’une partie de Yams</h2>
+                <hr class="decorative-line">
+                <div class="contenut">
+                    <p class="mt1">Après avoir déterminé le premier joueur et le sens du jeu, <strong>chaque joueur
+                            dispose
+                            de
+                            3 lancers
+                            par tour pour réaliser une combinaison précise.</strong></p>
+                    <p>Au <strong>1er lancer</strong> le joueur jette tous ses dés. S'il est satisfait du résultat, il
+                        peut
+                        s’arrêter là et noter
+                        le score de la combinaison sur la fiche de score, sinon il rejoue.</p>
+                    <p>Au <strong>2ème et 3ème lancer</strong>, le joueur a le choix de relancer tous ses dés ou
+                        seulement
+                        quelques-uns pour
+                        tenter de réaliser une combinaison.</p>
+                    <p>Après ses 3 lancers de dés <strong>le joueur doit obligatoirement noter son résultat dans une
+                            case
+                            combinaison de
+                            la fiche de score.</strong> S'il lui est impossible de remplir une case, il doit alors
+                        <strong>barrer une
+                            combinaison de
+                            son choix</strong> et ne pourra plus la réaliser par la suite.
+                    </p>
+                    <p>Une partie de yams a un <strong>nombre de tours</strong> qui correspond aux combinaisons à
+                        réaliser
+                        sur
+                        une fiche de
+                        score; le jeu yams se termine donc au <strong>13ème tour.</strong></p>
+                    <p><strong>La partie de Yam's se termine quand chaque joueur a rempli sa grille de score.</strong>
+                        Chacun
+                        compte ses points
+                        en commençant par la section haute (sans oublier le bonus de 35 points s'il est validé), puis la
+                        section
+                        basse, et enfin en additionnant les totaux 1 et 2.</p>
+                    <p class="mb"><strong>Le gagnant est le joueur qui totalise le plus de points.</strong></p>
+                </div>
+
+                <section class="mt1">
+                    <hr class="decorative-line">
+                    <h2 class="text">Les combinaisons de la fiche de score du Yams</h2>
+                    <hr class="decorative-line">
+                    <p class="mt1">Une feuille de score est généralement divisée en deux parties, et comprend les
+                        combinaisons suivantes
+                        :</p>
+                    <h3 class="text2 mtb">Section haute :</h3>
+                    <table>
+                        <tr>
+                            <th class="text-class">Combinaison</th>
+                            <th class="text-class">Valeur</th>
+                            <th class="text-class">Scores</th>
+                        </tr>
+                        <tr>
+                            <td><img src="../image/de1.jpg" alt="Somme des as obtenus" class="image-class"></td>
+                            <td class="text-class">Somme des as obtenus</td>
+                            <td class="text-class">...</td>
+                        </tr>
+                        <tr>
+                            <td><img src="../image/de2.jpg" alt="Somme des deux obtenus" class="image-class"></td>
+                            <td class="text-class">Somme des deux obtenus</td>
+                            <td class="text-class">...</td>
+                        </tr>
+                        <tr>
+                            <td><img src="../image/de3.jpg" alt="Somme des trois obtenus" class="image-class"></td>
+                            <td class="text-class">Somme des trois obtenus</td>
+                            <td class="text-class">...</td>
+                        </tr>
+                        <tr>
+                            <td><img src="../image/de4.jpg" alt="Somme des quatre obtenus" class="image-class"></td>
+                            <td class="text-class">Somme des quatre obtenus</td>
+                            <td class="text-class">...</td>
+                        </tr>
+                        <tr>
+                            <td><img src="../image/de5.jpg" alt="Somme des cinq obtenus" class="image-class"></td>
+                            <td class="text-class">Somme des cinq obtenus</td>
+                            <td class="text-class">...</td>
+                        </tr>
+                        <tr>
+                            <td><img src="../image/de6.jpg" alt="Somme des six obtenus" class="image-class"></td>
+                            <td class="text-class">Somme des six obtenus</td>
+                            <td class="text-class">...</td>
+                        </tr>
+                        <tr>
+                            <td class="text-class"><strong>Bonus de 35 points </strong></td>
+                            <td class="text-class">Si la somme des scores est supérieure ou égale à 63</td>
+                            <td class="text-class">...</td>
+                        </tr>
+                    </table>
+
+                    <h3 class="text2 mtb">Section basse :</h3>
+                    <table>
+                        <tr>
+                            <th class="text-class">Combinaison</th>
+                            <th class="text-class">Valeur</th>
+                            <th class="text-class">Scores</th>
+                        </tr>
+                        <tr>
+                            <td><img src="path/to/brelan.jpg" alt="Brelan (3 dés identiques)" class="image-class"></td>
+                            <td>Brelan (3 dés identiques)</td>
+                            <td>30 points</td>
+                        </tr>
+                        <tr>
+                            <td><img src="path/to/carre.jpg" alt="Carré (4 dés identiques)" class="image-class"></td>
+                            <td>Carré (4 dés identiques)</td>
+                            <td>40 points</td>
+                        </tr>
+                        <tr>
+                            <td><img src="path/to/full.jpg" alt="Full (3 dés identiques et 2 dés identiques)"
+                                    class="image-class"></td>
+                            <td>Full (3 dés identiques et 2 dés identiques)</td>
+                            <td>35 points</td>
+                        </tr>
+                        <tr>
+                            <td><img src="path/to/petite-suite.jpg" alt="Petite Suite (4 dés qui se suivent)"
+                                    class="image-class"></td>
+                            <td>Petite Suite (4 dés qui se suivent)</td>
+                            <td>25 points</td>
+                        </tr>
+                        <tr>
+                            <td><img src="path/to/grande-suite.jpg" alt="Grande Suite (5 dés qui se suivent)"
+                                    class="image-class"></td>
+                            <td>Grande Suite (5 dés qui se suivent)</td>
+                            <td>40 points</td>
+                        </tr>
+                        <tr>
+                            <td><img src="path/to/yams.jpg" alt="YAM'S (5 dés identiques)" class="image-class"></td>
+                            <td>YAM'S (5 dés identiques)</td>
+                            <td>50 points</td>
+                        </tr>
+                        <tr>
+                            <td><img src="path/to/chance.jpg" alt="La Chance (Somme des 5 dés)" class="image-class">
+                            </td>
+                            <td>La Chance (Somme des 5 dés)</td>
+                            <td>...</td>
+                        </tr>
+                    </table>
+                </section>
+
+            </section>
+            <hr class="decorative-line">
+            <h2 class="text">Exemple d'un tour au Yams</h2>
+            <hr class="decorative-line">
+            <section class="image-section">
+                <div class="image-container">
+                    <img src="../image/Lance1.jpg" alt="Description de l'image 1"
+                        class="animate__animated animate__fadeInBottomLeft wow">
+                    <p>Lancez les cinq dés pour un premier essais.</p>
+                </div>
+                <div class="image-container">
+                    <img src="../image/Lance2.jpg" alt="Description de l'image 2"
+                        class="animate__animated animate__fadeInUp wow">
+                    <p>S’arrêter et prendre le <strong>Brelan </strong>? Relancer deux 3 pour tenter la
+                        <strong>Suite</strong> ? Relancer le 2 et le 4
+                        pour
+                        tenter le <strong>Yam’s </strong>? À vous de choisir, il vous reste deux lancers.
+                    </p>
+                </div>
+                <div class="image-container">
+                    <img src="../image/Lance3.jpg" alt="Description de l'image 3"
+                        class="animate__animated animate__fadeInBottomRight wow">
+                    <p>Relancez deux dés. <strong>Yam's !</strong><br> À vous le bonus.
+                    </p>
+                </div>
+            </section>
+
+            <section>
+                <h2>Les bonus de points pouvant être gagnés au Yams</h2>
+                <p>Si le total de la section haute atteint ou dépasse 63 points, le joueur gagne un bonus de 35 points.
+                </p>
+                <p>Si un joueur réalise un second Yam’s et qu’il a déjà inscrit 50 points, il rajoute un bonus de 100
+                    points
+                    dans sa case et doit en contrepartie rayer une autre case libre. On applique également cette règle
+                    dans
+                    le
+                    cas d’un troisième Yam’s, d’un quatrième Yam’s...</p>
+            </section>
+
+            <section>
+                <h2>Les stratégies pour gagner au Yams</h2>
+                <p>Le Yams est jeu de hasard raisonné, il n'y a donc pas de stratégie infaillible mais pour optimiser
+                    ses
+                    gains
+                    il y a quelques astuces à connaitre, par exemple :</p>
+                <ul>
+                    <li>Si vous avez un brelan au premier lancer de dés, essayez toujours d'améliorer votre combinaison
+                        en
+                        visant le carré, le full, le Yams ou un gros score dans la section haute.</li>
+                    <li>Si vous n'obtenez pas la combinaison que vous visiez et que vous devez sacrifier une case,
+                        gardez le
+                        plus longtemps possible la chance et préférez sacrifier les 1 et le 2, car ils rapportent peu de
+                        points.
+                    </li>
+                    <li>Adaptez votre jeu à celui de vos adversaires pour voir où il est judicieux de chercher à faire
+                        plus
+                        et
+                        où il est possible de faire un faible score sans trop de risque.</li>
+                </ul>
+            </section>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+        <script>
+            new WOW().init();
+        </script>
+</body>
+
+
+<!-- debut footer-->
+<footer class="mt">
+    <div class="containerf">
+        <article>
+            <img src="../image/Logo1.png" alt="">
+            <p class="justif">Suivez-nous sur les réseaux sociaux pour rester à jour avec nos dernières
+                actualités,
+                événements et
+                offres spéciales!</p>
+            <a href="https://www.facebook.com/bdesciencesulyon/?locale=fr_FR" target="_blank"><i
+                    class="fab fa-facebook"></i></a>
+            <a href="https://www.instagram.com/beede.lyon/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="http://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+        </article>
+        <form action="">
+            <h2 class="cb text">Nous contacter</h2>
+            <p>Nous sommes là pour vous aider! Que ce soit pour des questions, des suggestions ou simplement
+                pour
+                dire bonjour,
+                n'hésitez pas à nous contacter. Notre équipe est disponible pour répondre à vos besoins et vous
+                offrir le meilleur
+                service possible.</p>
+            <input type="text" placeholder="Message">
+            <input type="email" placeholder="Email">
+            <input type="submit" value="Envoyer" class="btnf">
+        </form>
+
+    </div>
+</footer>
+
+
+</html>
