@@ -136,12 +136,16 @@ class YamsGame {
   
     // Arrêter l'animation après 3 secondes
     clearTimeout(this.stopRollTimeout);
+    var btn = document.getElementById("rollButtonInGame");
+    btn.disabled = true;
     this.stopRollTimeout = setTimeout(this.stopRolling.bind(this), 3000);
   }
 
   stopRolling() {
+    
     this.isRolling = false;
-
+    var btn = document.getElementById("rollButtonInGame");
+    btn.disabled = false;
     // Mettre à jour l'affichage des dés
     this.updateDiceDisplay();
     this.updateSuggestions();
