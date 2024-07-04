@@ -409,10 +409,10 @@ class YamsGame {
     );
 
     // Renderer
-    const renderer = new THREE.WebGLRenderer();
+    const renderer = new THREE.WebGLRenderer({ alpha: true }); // Ajouter alpha: true pour la transparence
     const container = document.getElementById("threejs-container");
     renderer.setSize(container.clientWidth, container.clientHeight);
-    renderer.setClearColor(0xffffff, 1); // Définir la couleur de fond en blanc
+    renderer.setClearColor(0x000000, 0); // Rendre le fond transparent
     renderer.setAnimationLoop(this.animate.bind(this));
 
     // Ajouter le renderer au container
