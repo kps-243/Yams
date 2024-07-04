@@ -68,3 +68,45 @@ body {
     margin: 5px;
     display: inline-block;
 }
+/* .scoreboard thead,
+.scoreboard tbody,
+.scoreboard th,
+.scoreboard td,
+.scoreboard tr {
+    display: table-row-group;
+} */
+
+/* Styles pour les écrans mobiles */
+@media screen and (max-width: 768px) {
+    .scoreboard table {
+        display: block;
+    }
+
+    .scoreboard thead {
+        display: none;
+    }
+
+    .scoreboard tr {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .scoreboard td {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        border: 1px solid #000;
+        text-align: left;
+    }
+
+    .scoreboard td::before {
+        content: attr(data-category);
+        font-weight: bold;
+        text-transform: capitalize;
+        margin-right: 10px;
+    }
+
+    .scoreboard td:first-child::before {
+        content: "Joueur";
+    }
+}
