@@ -223,6 +223,10 @@ footer form input[type="submit"] {
   margin-top: 20px;
 }
 
+.mt2 {
+  margin-top: 50px;
+}
+
 .pt1 {
   padding-top: 30px;
 }
@@ -255,7 +259,7 @@ footer form input[type="submit"] {
   border: none;
   border-top: 1px solid #000; /* Couleur et épaisseur de la ligne */
   margin: 0 auto; /* Centrer la ligne horizontalement */
-  width: 45%; /* Largeur de la ligne */
+  width: 48%; /* Largeur de la ligne */
 }
 
 .image-section {
@@ -281,11 +285,32 @@ footer form input[type="submit"] {
 
 .contenut {
   margin: 50px;
-  text-align: justify;
+  text-align: center;
 }
 
 .image-class {
-  width: 50px; /* Adjust the size as needed */
+  width: 50px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.image-class1 {
+  width: 145px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.image-class2 {
+  width: 192px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.image-class3 {
+  width: 239px;
   height: auto;
   display: block;
   margin: 0 auto;
@@ -297,5 +322,10 @@ footer form input[type="submit"] {
 
 .mtb {
   margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.mtb1 {
+  margin-top: 50px;
   margin-bottom: 20px;
 }
