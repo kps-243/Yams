@@ -553,7 +553,7 @@ document.addEventListener("DOMContentLoaded", () => {
       input.type = "text";
       input.placeholder = `Nom du joueur ${i + 1}`;
       input.id = `player${i}`;
-      input.classList.add("border", "ml-2", "rounded-lg");
+      input.classList.add("border", "ml-2", "rounded-lg", "p-2");
       playerInputs.appendChild(input);
     }
     document.getElementById("setupButton").style.display = "none";
