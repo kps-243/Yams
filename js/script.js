@@ -357,12 +357,12 @@ class YamsGame {
 
         const possibleCategories = availableCategories.filter(category => {
             switch (category) {
-                case 'as': return counts.includes(1);
-                case 'deux': return counts.includes(2);
-                case 'trois': return counts.includes(3);
-                case 'quatre': return counts.includes(4);
-                case 'cinq': return counts.includes(5);
-                case 'six': return counts.includes(6);
+                case 'as': return values.includes(1);
+                case 'deux': return values.includes(2);
+                case 'trois': return values.includes(3);
+                case 'quatre': return values.includes(4);
+                case 'cinq': return values.includes(5);
+                case 'six': return values.includes(6);
                 case 'brelan': return counts.some(count => count >= 3);
                 case 'carre': return counts.some(count => count >= 4);
                 case 'fullHouse': return counts.includes(3) && counts.includes(2);
@@ -405,9 +405,12 @@ document.addEventListener('DOMContentLoaded', () => {
             input.type = 'text';
             input.placeholder = `Nom du joueur ${i + 1}`;
             input.id = `player${i}`;
+            input.classList.add('border', 'ml-2');
             playerInputs.appendChild(input);
         }
         document.getElementById('startButton').style.display = 'block';
+        playerInputs.style.display = 'block';
+        document.getElementById('setupButton').style.display = 'none'
     };
 
     document.getElementById('startButton').onclick = () => {
