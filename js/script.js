@@ -89,35 +89,34 @@ class YamsGame {
     const tbody = document.getElementById("scoreboardBody");
     tbody.innerHTML = "";
     this.players.forEach((player, index) => {
-        const row = document.createElement("tr");
-        row.id = `player${index}`;
-        row.innerHTML = `
-            <td data-category="Joueur">${player.name}</td>
-            <td id="player${index}-as" data-category="as"></td>
-            <td id="player${index}-deux" data-category="deux"></td>
-            <td id="player${index}-trois" data-category="trois"></td>
-            <td id="player${index}-quatre" data-category="quatre"></td>
-            <td id="player${index}-cinq" data-category="cinq"></td>
-            <td id="player${index}-six" data-category="six"></td>
-            <td id="player${index}-brelan" data-category="brelan"></td>
-            <td id="player${index}-carre" data-category="carre"></td>
-            <td id="player${index}-fullHouse" data-category="fullHouse"></td>
-            <td id="player${index}-petiteSuite" data-category="petiteSuite"></td>
-            <td id="player${index}-grandeSuite" data-category="grandeSuite"></td>
-            <td id="player${index}-yams" data-category="yams"></td>
-            <td id="player${index}-chance" data-category="chance"></td>
-            <td id="player${index}-total" data-category="total"></td>
-        `;
-        tbody.appendChild(row);
+      const row = document.createElement("tr");
+      row.id = `player${index}`;
+      row.innerHTML = `
+        <td data-category="Joueur">${player.name}</td>
+        <td id="player${index}-as" data-category="as"></td>
+        <td id="player${index}-deux" data-category="deux"></td>
+        <td id="player${index}-trois" data-category="trois"></td>
+        <td id="player${index}-quatre" data-category="quatre"></td>
+        <td id="player${index}-cinq" data-category="cinq"></td>
+        <td id="player${index}-six" data-category="six"></td>
+        <td id="player${index}-brelan" data-category="brelan"></td>
+        <td id="player${index}-carre" data-category="carre"></td>
+        <td id="player${index}-fullHouse" data-category="fullHouse"></td>
+        <td id="player${index}-petiteSuite" data-category="petiteSuite"></td>
+        <td id="player${index}-grandeSuite" data-category="grandeSuite"></td>
+        <td id="player${index}-yams" data-category="yams"></td>
+        <td id="player${index}-chance" data-category="chance"></td>
+        <td id="player${index}-total" data-category="total"></td>
+      `;
+      tbody.appendChild(row);
     });
 
     tbody.querySelectorAll("td[data-category]").forEach((cell) => {
-        cell.addEventListener("click", () => {
-            this.markScore(cell);
-        });
+      cell.addEventListener("click", () => {
+        this.markScore(cell);
+      });
     });
-}
-
+  }
 
   addDieClickEvents() {
     document.querySelectorAll(".die").forEach((dieElement, index) => {
@@ -133,7 +132,7 @@ class YamsGame {
 
     // Lancer chaque dé
     this.dice.forEach((die) => die.roll());
-  
+
     // Arrêter l'animation après 3 secondes
     clearTimeout(this.stopRollTimeout);
     var btn = document.getElementById("rollButtonInGame");
@@ -142,15 +141,12 @@ class YamsGame {
   }
 
   stopRolling() {
-    
     this.isRolling = false;
     var btn = document.getElementById("rollButtonInGame");
     btn.disabled = false;
     // Mettre à jour l'affichage des dés
     this.updateDiceDisplay();
     this.updateSuggestions();
-
-
   }
 
   updateDiceDisplay() {
@@ -239,32 +235,39 @@ class YamsGame {
     const category = cell.dataset.category;
     const player = this.players[this.currentPlayerIndex];
     if (player.scoreSheet[category] === null) {
-        const score = this.calculateScore(category);
-        var conf = confirm("Voulez vous vraiment mettre " + score + " dans la catégorie " + category + "?");
-        if (!conf) {
-            return;
-        }
-        player.addScore(category, score);
+      const score = this.calculateScore(category);
+      var conf = confirm(
+        "Voulez vous vraiment mettre " +
+          score +
+          " dans la catégorie " +
+          category +
+          "?"
+      );
+      if (!conf) {
+        return;
+      }
+      player.addScore(category, score);
 
-        // Vérifier si le joueur a rempli la partie haute
-        const upperCategories = ['as', 'deux', 'trois', 'quatre', 'cinq', 'six'];
-        const upperTotal = upperCategories.reduce((total, cat) => {
-            return total + (player.scoreSheet[cat] || 0);
-        }, 0);
+      // Vérifier si le joueur a rempli la partie haute
+      const upperCategories = ["as", "deux", "trois", "quatre", "cinq", "six"];
+      const upperTotal = upperCategories.reduce((total, cat) => {
+        return total + (player.scoreSheet[cat] || 0);
+      }, 0);
 
-        // Si le total de la partie haute est >= 63, ajouter le bonus
-        if (upperTotal >= 63) {
-            alert("Félicitations ! vous avez atteint au moins 63 points avec la partie haute ! vous allez donc bénificier de 35 points Bonus !");
-            player.addScore('bonus', 35);
-        }
+      // Si le total de la partie haute est >= 63, ajouter le bonus
+      if (upperTotal >= 63) {
+        alert(
+          "Félicitations ! vous avez atteint au moins 63 points avec la partie haute ! vous allez donc bénificier de 35 points Bonus !"
+        );
+        player.addScore("bonus", 35);
+      }
 
-        this.updateScoreboard();
-        this.nextPlayer();
+      this.updateScoreboard();
+      this.nextPlayer();
     } else {
-        alert("Cette catégorie a déjà été utilisée. Choisissez-en une autre.");
+      alert("Cette catégorie a déjà été utilisée. Choisissez-en une autre.");
     }
-}
-
+  }
 
   updateScoreboard() {
     this.players.forEach((player, index) => {
@@ -325,11 +328,11 @@ class YamsGame {
     const player = this.players[this.currentPlayerIndex];
     const suggestionsList = document.getElementById("suggestionsList");
     suggestionsList.innerHTML = "";
-  
+
     const availableCategories = player.getAvailableCategories();
     const counts = this.countDiceValues();
     const values = this.getDiceValues();
-  
+
     console.log(values);
     console.log(counts);
 
@@ -373,12 +376,12 @@ class YamsGame {
           return false;
       }
     });
-  
+
     // Créer des éléments de liste pour chaque catégorie possible
     possibleCategories.forEach((category) => {
       const li = document.createElement("li");
       li.textContent = category;
-  
+
       // Gérer le clic sur la suggestion pour marquer la catégorie
       li.onclick = () => {
         const score = this.calculateScore(category);
@@ -386,11 +389,10 @@ class YamsGame {
         this.updateScoreboard();
         this.nextPlayer();
       };
-  
+
       suggestionsList.appendChild(li);
     });
   }
-  
 
   start() {
     this.playRound();
@@ -399,11 +401,16 @@ class YamsGame {
   setupThreeJS() {
     // Scène et caméra
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const camera = new THREE.PerspectiveCamera(
+      75,
+      window.innerWidth / window.innerHeight,
+      0.1,
+      1000
+    );
 
     // Renderer
     const renderer = new THREE.WebGLRenderer();
-    const container = document.getElementById('threejs-container');
+    const container = document.getElementById("threejs-container");
     renderer.setSize(container.clientWidth, container.clientHeight);
     renderer.setClearColor(0xffffff, 1); // Définir la couleur de fond en blanc
     renderer.setAnimationLoop(this.animate.bind(this));
@@ -414,12 +421,12 @@ class YamsGame {
     // Charger les textures des dés
     const loader = new THREE.TextureLoader();
     const materials = [
-        new THREE.MeshBasicMaterial({ map: loader.load('../image/dice1.png') }),
-        new THREE.MeshBasicMaterial({ map: loader.load('../image/dice2.png') }),
-        new THREE.MeshBasicMaterial({ map: loader.load('../image/dice3.png') }),
-        new THREE.MeshBasicMaterial({ map: loader.load('../image/dice4.png') }),
-        new THREE.MeshBasicMaterial({ map: loader.load('../image/dice5.png') }),
-        new THREE.MeshBasicMaterial({ map: loader.load('../image/dice6.png') }),
+      new THREE.MeshBasicMaterial({ map: loader.load("../image/dice1.png") }),
+      new THREE.MeshBasicMaterial({ map: loader.load("../image/dice2.png") }),
+      new THREE.MeshBasicMaterial({ map: loader.load("../image/dice3.png") }),
+      new THREE.MeshBasicMaterial({ map: loader.load("../image/dice4.png") }),
+      new THREE.MeshBasicMaterial({ map: loader.load("../image/dice5.png") }),
+      new THREE.MeshBasicMaterial({ map: loader.load("../image/dice6.png") }),
     ];
 
     // Créer des dés avec des positions espacées
@@ -427,18 +434,18 @@ class YamsGame {
     this.diceMeshes = [];
 
     const dicePositions = [
-        { x: -3, y: 0.5, z: -3 },
-        { x: -3, y: 0.5, z: 3 },
-        { x: 3, y: 0.5, z: -3 },
-        { x: 3, y: 0.5, z: 3 },
-        { x: 0, y: 0.5, z: 0 },
+      { x: -3, y: 0.5, z: -3 },
+      { x: -3, y: 0.5, z: 3 },
+      { x: 3, y: 0.5, z: -3 },
+      { x: 3, y: 0.5, z: 3 },
+      { x: 0, y: 0.5, z: 0 },
     ];
 
     dicePositions.forEach((pos, index) => {
-        const dice = new THREE.Mesh(diceGeometry, materials);
-        dice.position.set(pos.x, pos.y, pos.z);
-        scene.add(dice);
-        this.diceMeshes.push(dice);
+      const dice = new THREE.Mesh(diceGeometry, materials);
+      dice.position.set(pos.x, pos.y, pos.z);
+      scene.add(dice);
+      this.diceMeshes.push(dice);
     });
 
     // Créer le plateau circulaire
@@ -457,14 +464,14 @@ class YamsGame {
     this.camera = camera;
 
     // Ajuster la taille du renderer lors du redimensionnement de la fenêtre
-    window.addEventListener('resize', () => {
-        const width = container.clientWidth;
-        const height = container.clientHeight;
-        renderer.setSize(width, height);
-        camera.aspect = width / height;
-        camera.updateProjectionMatrix();
+    window.addEventListener("resize", () => {
+      const width = container.clientWidth;
+      const height = container.clientHeight;
+      renderer.setSize(width, height);
+      camera.aspect = width / height;
+      camera.updateProjectionMatrix();
     });
-}
+  }
 
   updateThreeJSDice() {
     this.dice.forEach((die, index) => {
@@ -501,9 +508,11 @@ class YamsGame {
 
   animate() {
     if (this.isRolling) {
-      this.diceMeshes.forEach((diceMesh) => {
-        diceMesh.rotation.x += 0.1;
-        diceMesh.rotation.y += 0.05;
+      this.diceMeshes.forEach((diceMesh, index) => {
+        if (!this.dice[index].locked) {
+          diceMesh.rotation.x += 0.1;
+          diceMesh.rotation.y += 0.05;
+        }
       });
     }
 
