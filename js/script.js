@@ -539,6 +539,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (players.length === numPlayers) {
       document.getElementById("setup").style.display = "none";
       document.getElementById("game").style.display = "block";
+      document.getElementById("de").style.display = "block";
       game = new YamsGame(players);
       game.start();
     } else {
