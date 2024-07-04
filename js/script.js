@@ -46,6 +46,7 @@ class Player {
       grandeSuite: null,
       yams: null,
       chance: null,
+      bonus: null,
     };
   }
 
@@ -230,19 +231,32 @@ class YamsGame {
     const category = cell.dataset.category;
     const player = this.players[this.currentPlayerIndex];
     if (player.scoreSheet[category] === null) {
-      const score = this.calculateScore(category);
-      var conf = confirm("Voulez vous vraiment mettre " + score + " dans la catégorie " + category + "?");
-     if(!conf)
-      {
-        return;
-      }
-      player.addScore(category, score);
-      this.updateScoreboard();
-      this.nextPlayer();
+        const score = this.calculateScore(category);
+        var conf = confirm("Voulez vous vraiment mettre " + score + " dans la catégorie " + category + "?");
+        if (!conf) {
+            return;
+        }
+        player.addScore(category, score);
+
+        // Vérifier si le joueur a rempli la partie haute
+        const upperCategories = ['as', 'deux', 'trois', 'quatre', 'cinq', 'six'];
+        const upperTotal = upperCategories.reduce((total, cat) => {
+            return total + (player.scoreSheet[cat] || 0);
+        }, 0);
+
+        // Si le total de la partie haute est >= 63, ajouter le bonus
+        if (upperTotal >= 63) {
+            alert("Félicitations ! vous avez atteint au moins 63 points avec la partie haute ! vous allez donc bénificier de 35 points Bonus !");
+            player.addScore('bonus', 35);
+        }
+
+        this.updateScoreboard();
+        this.nextPlayer();
     } else {
-      alert("Cette catégorie a déjà été utilisée. Choisissez-en une autre.");
+        alert("Cette catégorie a déjà été utilisée. Choisissez-en une autre.");
     }
-  }
+}
+
 
   updateScoreboard() {
     this.players.forEach((player, index) => {
@@ -303,10 +317,15 @@ class YamsGame {
     const player = this.players[this.currentPlayerIndex];
     const suggestionsList = document.getElementById("suggestionsList");
     suggestionsList.innerHTML = "";
+  
     const availableCategories = player.getAvailableCategories();
     const counts = this.countDiceValues();
     const values = this.getDiceValues();
+  
+    console.log(values);
+    console.log(counts);
 
+    // Filtrer les catégories possibles en fonction des dés actuels
     const possibleCategories = availableCategories.filter((category) => {
       switch (category) {
         case "as":
@@ -341,24 +360,29 @@ class YamsGame {
         case "yams":
           return counts.some((count) => count === 5);
         case "chance":
-          return true;
+          return true; // Peut toujours être rempli
         default:
           return false;
       }
     });
-
+  
+    // Créer des éléments de liste pour chaque catégorie possible
     possibleCategories.forEach((category) => {
       const li = document.createElement("li");
       li.textContent = category;
+  
+      // Gérer le clic sur la suggestion pour marquer la catégorie
       li.onclick = () => {
         const score = this.calculateScore(category);
         player.addScore(category, score);
         this.updateScoreboard();
         this.nextPlayer();
       };
+  
       suggestionsList.appendChild(li);
     });
   }
+  
 
   start() {
     this.playRound();
