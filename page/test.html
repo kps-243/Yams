@@ -5,8 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jeu de YAMS</title>
     <link rel="stylesheet" href="../css/styleTest.css">
+    <script type="importmap">
+        {
+          "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@v0.166.1/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@v0.166.1/examples/jsm/"
+          }
+        }
+    </script>
 </head>
 <body>
+    <header class="container mx-auto mt-5">
+        <nav class="flex justify-between items-center px-12 bg-[#F5F3E2] shadow-lg w-full rounded-[75px]">
+            <a href="" class="py-2">
+                <div class="w-fit h-16 lg:h-24">
+                    <img src="../image/Logo-yams.webp" alt="Logo - YAMS" class="h-full w-fit object-contain">
+                </div>
+            </a>
+            <a class="lg:px-6 px-4 py-2 h-fit bg-red-500 rounded-[75px] flex items-center text-white gap-4 hover:bg-white hover:text-black transition-all"
+                href="">
+                <div class="w-fit h-10">
+                    <img src="../image/sitcker-de.webp" alt="" class="w-fit h-full object-contain">
+                </div>
+                <span>Quitter la partie</span>
+            </a>
+        </nav>
+    </header>
     <h1>Jeu de YAMS</h1>
     <div id="setup">
         <label for="numPlayers">Nombre de joueurs :</label>
@@ -15,18 +39,10 @@
         <div id="playerInputs"></div>
         <button id="startButton" style="display:none;">Démarrer le jeu</button>
     </div>
-    <div id="game" style="display:none;">
-        <div id="currentPlayer">Joueur actuel : </div>
-        <div class="dice">
-            <div class="die" id="die0">1</div>
-            <div class="die" id="die1">1</div>
-            <div class="die" id="die2">1</div>
-            <div class="die" id="die3">1</div>
-            <div class="die" id="die4">1</div>
-        </div>
-        <div class="controls">
-            <button id="rollButton">Lancer les dés</button>
-        </div>
+    <div id="threejs-container"></div>
+    <button id="rollButton"
+        class="lg:px-6 px-4 py-2 h-fit bg-blue-500 rounded-[75px] flex items-center text-white gap-4 hover:bg-[#F5F3E2] hover:text-black transition-all">Lancer
+        le dé</button>
         <div class="scoreboard">
             <table>
                 <thead>
@@ -58,6 +74,6 @@
         </div>
         <div id="message"></div>
     </div>
-    <script src="../js/script.js"></script>
+    <script type="module" src="../js/script.js"></script>
 </body>
 </html>

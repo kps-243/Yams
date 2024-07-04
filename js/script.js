@@ -1,7 +1,114 @@
+import * as THREE from "three";
+import { TextureLoader } from "three";
+
+// Scène et caméra
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(
+    75,
+    window.innerWidth / window.innerHeight,
+    0.1,
+    1000
+);
+
+// Renderer
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setAnimationLoop(animate);
+
+// Ajouter le renderer au container
+const container = document.getElementById("threejs-container");
+container.appendChild(renderer.domElement);
+
+// Charger les textures des dés
+const loader = new TextureLoader();
+const materials = [
+    new THREE.MeshBasicMaterial({ map: loader.load("../image/dice1.png") }),
+    new THREE.MeshBasicMaterial({ map: loader.load("../image/dice2.png") }),
+    new THREE.MeshBasicMaterial({ map: loader.load("../image/dice3.png") }),
+    new THREE.MeshBasicMaterial({ map: loader.load("../image/dice4.png") }),
+    new THREE.MeshBasicMaterial({ map: loader.load("../image/dice5.png") }),
+    new THREE.MeshBasicMaterial({ map: loader.load("../image/dice6.png") }),
+];
+
+// Créer des dés avec des positions espacées
+const diceGeometry = new THREE.BoxGeometry(1, 1, 1);
+const diceMeshes = [];
+
+for (let i = 0; i < 5; i++) {
+    const dice = new THREE.Mesh(diceGeometry, materials);
+    dice.position.set(i * 2 - 4, 0.5, 0);
+    scene.add(dice);
+    diceMeshes.push(dice);
+}
+
+// Créer le plateau circulaire
+const circleGeometry = new THREE.CircleGeometry(7, 32);
+const circleMaterial = new THREE.MeshBasicMaterial({ color: 0x006400 }); // Vert foncé pour le plateau
+const circle = new THREE.Mesh(circleGeometry, circleMaterial);
+circle.rotation.x = -Math.PI / 2;
+scene.add(circle);
+
+// Positionner la caméra au-dessus du plateau
+camera.position.set(0, 10, 10);
+camera.lookAt(0, 0, 0);
+
+let isRolling = false;
+let stopRollTimeout;
+
+// Fonction pour lancer les dés
+function rollDice() {
+    isRolling = true;
+    diceInstances.forEach((dice) => dice.roll());
+    clearTimeout(stopRollTimeout);
+    stopRollTimeout = setTimeout(stopRolling, 3000);
+}
+
+function stopRolling() {
+    isRolling = false;
+    diceInstances.forEach((dice, index) => {
+        setDiceFinalPosition(diceMeshes[index], dice.value);
+    });
+}
+
+function setDiceFinalPosition(diceMesh, value) {
+    switch (value) {
+        case 1:
+            diceMesh.rotation.set(0, 0, Math.PI / 2);
+            break;
+        case 2:
+            diceMesh.rotation.set(0, 0, -Math.PI / 2);
+            break;
+        case 3:
+            diceMesh.rotation.set(0, 0, 0);
+            break;
+        case 4:
+            diceMesh.rotation.set(Math.PI, 0, 0);
+            break;
+        case 5:
+            diceMesh.rotation.set(-Math.PI / 2, 0, 0);
+            break;
+        case 6:
+            diceMesh.rotation.set(Math.PI / 2, 0, Math.PI / 2);
+            break;
+    }
+}
+
+function animate() {
+    if (isRolling) {
+        diceMeshes.forEach((diceMesh) => {
+            diceMesh.rotation.x += 0.1;
+            diceMesh.rotation.y += 0.05;
+        });
+    }
+    renderer.render(scene, camera);
+}
+
+// Classe Die (mise à jour pour inclure les dés 3D)
 class Die {
-    constructor() {
+    constructor(mesh) {
         this.value = 1;
         this.locked = false;
+        this.mesh = mesh;
     }
 
     roll() {
@@ -10,19 +117,17 @@ class Die {
         }
     }
 
-    getValue() {
-        return this.value;
-    }
-
     toggleLock() {
         this.locked = !this.locked;
     }
-
-    reset() {
-        this.value = 0;
-        this.locked = false;
-    }
 }
+
+// Initialiser les dés 3D
+const diceInstances = diceMeshes.map(mesh => new Die(mesh));
+
+// Gestion du bouton de lancer
+document.getElementById('rollButton').onclick = rollDice;
+
 
 class Player {
     constructor(name) {
@@ -61,7 +166,7 @@ class YamsGame {
     constructor(players) {
         this.players = players.map(name => new Player(name));
         this.currentPlayerIndex = 0;
-        this.dice = Array.from({ length: 5 }, () => new Die());
+        this.dice = diceInstances;
         this.round = 1;
         this.maxRounds = 13;
         this.rolls = 0;
