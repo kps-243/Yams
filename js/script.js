@@ -4,7 +4,7 @@ import { TextureLoader } from "three";
 // Classe Die
 class Die {
   constructor() {
-    this.value = 1;
+    this.value = 0;
     this.locked = false;
   }
 
@@ -133,7 +133,7 @@ class YamsGame {
 
     // Lancer chaque dé
     this.dice.forEach((die) => die.roll());
-
+  
     // Arrêter l'animation après 3 secondes
     clearTimeout(this.stopRollTimeout);
     this.stopRollTimeout = setTimeout(this.stopRolling.bind(this), 3000);
@@ -144,6 +144,9 @@ class YamsGame {
 
     // Mettre à jour l'affichage des dés
     this.updateDiceDisplay();
+    this.updateSuggestions();
+
+
   }
 
   updateDiceDisplay() {

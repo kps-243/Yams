@@ -19,7 +19,8 @@ body {
 }
 
 .die.locked {
-  background-color: #f5f5f5;
+  background-color: red;
+  color: white;
 }
 
 .scoreboard table {
