@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Jeu de Yams</title>
+    <link rel="stylesheet" href="../css/styleSansDe.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Jeu de Yams</h1>
+        </header>
+        <section id="setup">
+            <div class="setup-container">
+                <label for="numPlayers">Nombre de joueurs:</label>
+                <input type="number" id="numPlayers" min="1" max="10">
+                <button onclick="setupPlayers()">Valider</button>
+            </div>
+            <div id="playerNames" class="setup-container"></div>
+        </section>
+        <section id="game" style="display:none;">
+            <div id="paragraphe"></div>
+            <div id="scoreTables" class="score-tables-container"></div>
+        </section>
+    </div>
+    <script src="../js/scriptSansDe.js"></script>
+</body>
+</html>
