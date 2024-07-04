@@ -87,37 +87,51 @@ class YamsGame {
   }
 
   initializeScoreboard() {
+    const theadRow = document.querySelector("thead tr");
     const tbody = document.getElementById("scoreboardBody");
+  
+    // Clear the table body and header
+    theadRow.innerHTML = '<th class="p-2 border-b">Catégorie</th>';
     tbody.innerHTML = "";
+  
+    // Add headers for each player
     this.players.forEach((player, index) => {
+      const th = document.createElement("th");
+      th.className = "p-2 border-b";
+      th.textContent = player.name;
+      theadRow.appendChild(th);
+    });
+  
+    // Define categories
+    const categories = [
+      "As", "Deux", "Trois", "Quatre", "Cinq", "Six", "Brelan", "Carré", "Full House",
+      "Petite Suite", "Grande Suite", "Yams", "Chance", "Total"
+    ];
+  
+    // Add rows for each category
+    categories.forEach((category) => {
       const row = document.createElement("tr");
-      row.id = `player${index}`;
-      row.innerHTML = `
-        <td data-category="Joueur">${player.name}</td>
-        <td id="player${index}-as" data-category="as"></td>
-        <td id="player${index}-deux" data-category="deux"></td>
-        <td id="player${index}-trois" data-category="trois"></td>
-        <td id="player${index}-quatre" data-category="quatre"></td>
-        <td id="player${index}-cinq" data-category="cinq"></td>
-        <td id="player${index}-six" data-category="six"></td>
-        <td id="player${index}-brelan" data-category="brelan"></td>
-        <td id="player${index}-carre" data-category="carre"></td>
-        <td id="player${index}-fullHouse" data-category="fullHouse"></td>
-        <td id="player${index}-petiteSuite" data-category="petiteSuite"></td>
-        <td id="player${index}-grandeSuite" data-category="grandeSuite"></td>
-        <td id="player${index}-yams" data-category="yams"></td>
-        <td id="player${index}-chance" data-category="chance"></td>
-        <td id="player${index}-total" data-category="total"></td>
-      `;
+      const categoryCell = document.createElement("td");
+      categoryCell.className = "p-2 border-b";
+      categoryCell.textContent = category;
+      row.appendChild(categoryCell);
+  
+      this.players.forEach((player, index) => {
+        const cell = document.createElement("td");
+        cell.id = `player${index}-${category.toLowerCase().replace(" ", "")}`;
+        cell.dataset.category = category.toLowerCase().replace(" ", "");
+        row.appendChild(cell);
+  
+        // Add event listener for each cell
+        cell.addEventListener("click", () => {
+          this.markScore(cell);
+        });
+      });
+  
       tbody.appendChild(row);
     });
-
-    tbody.querySelectorAll("td[data-category]").forEach((cell) => {
-      cell.addEventListener("click", () => {
-        this.markScore(cell);
-      });
-    });
   }
+  
 
   addDieClickEvents() {
     document.querySelectorAll(".die").forEach((dieElement, index) => {

@@ -18,6 +18,8 @@
 </head>
 
 <body class="font-sans">
+    <div class="parallax"></div>
+
     <header class="container mx-auto mt-5">
         <nav class="flex justify-between items-center px-12 bg-[#F5F3E2] shadow-lg w-full rounded-[75px]">
             <a href="" class="py-2">
@@ -63,31 +65,19 @@
             <div class="scoreboard bg-white shadow-md rounded-lg overflow-x-auto">
                 <table class="min-w-full border-collapse">
                     <thead>
-                        <tr>
-                            <th class="p-2 border-b">Joueur</th>
-                            <th class="p-2 border-b">As</th>
-                            <th class="p-2 border-b">Deux</th>
-                            <th class="p-2 border-b">Trois</th>
-                            <th class="p-2 border-b">Quatre</th>
-                            <th class="p-2 border-b">Cinq</th>
-                            <th class="p-2 border-b">Six</th>
-                            <th class="p-2 border-b">Brelan</th>
-                            <th class="p-2 border-b">Carré</th>
-                            <th class="p-2 border-b">Full House</th>
-                            <th class="p-2 border-b">Petite Suite</th>
-                            <th class="p-2 border-b">Grande Suite</th>
-                            <th class="p-2 border-b">Yams</th>
-                            <th class="p-2 border-b">Chance</th>
-                            <th class="p-2 border-b">Total</th>
-                        </tr>
+                      <tr>
+                        <th class="p-2 border-b">Catégorie</th>
+                        <!-- Les en-têtes de colonne pour chaque joueur seront ajoutés ici dynamiquement -->
+                      </tr>
                     </thead>
                     <tbody id="scoreboardBody">
+                      <!-- Les lignes pour chaque catégorie seront ajoutées ici dynamiquement -->
                     </tbody>
-                </table>
+                  </table>
             </div>
             <div id="suggestions" class="mt-4 text-white">
                 <strong>Suggestions de catégories :</strong>
-                <ul id="suggestionsList" class="list-none p-0"></ul>
+                <ul id="suggestionsList" class="list-none p-0 text-black"></ul>
             </div>
             <div id="message" class="mt-4 text-red-500 font-bold"></div>
         </div>
