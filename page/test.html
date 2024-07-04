@@ -34,10 +34,60 @@
             </a>
         </nav>
     </header>
-    <div id="threejs-container"></div>
-    <button id="rollButtonInGame"
-        class="lg:px-6 px-4 py-2 h-fit bg-blue-500 rounded-[75px] flex items-center text-white gap-4 hover:bg-[#F5F3E2] hover:text-black transition-all">Lancer
-        le dé</button>
+    <div class="flex gap-10">
+        <div class="w-1/2">
+            <div id="threejs-container"></div>
+            <div class="dice">
+                <div class="die" id="die0"></div>
+                <div class="die" id="die1"></div>
+                <div class="die" id="die2"></div>
+                <div class="die" id="die3"></div>
+                <div class="die" id="die4"></div>
+            </div>
+            <button id="rollButtonInGame"
+                class="lg:px-6 px-4 py-2 h-fit bg-blue-500 rounded-[75px] flex items-center text-white gap-4 hover:bg-[#F5F3E2] hover:text-black transition-all">Lancer
+                le dé
+            </button>
+        </div>
+        <div id="game" style="display:none;" class="w-1/2">
+            <div id="currentPlayer">Joueur actuel : </div>
+            
+            <div class="controls">
+    
+            </div>
+            <div class="scoreboard">
+                <table class="w-full border-collapse">
+                    <thead>
+                        <tr>
+                            <th>Joueur</th>
+                            <th>As</th>
+                            <th>Deux</th>
+                            <th>Trois</th>
+                            <th>Quatre</th>
+                            <th>Cinq</th>
+                            <th>Six</th>
+                            <th>Brelan</th>
+                            <th>Carré</th>
+                            <th>Full House</th>
+                            <th>Petite Suite</th>
+                            <th>Grande Suite</th>
+                            <th>Yams</th>
+                            <th>Chance</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody id="scoreboardBody" class="w-full">
+                    </tbody>
+                </table>
+            </div>                 
+            <div id="suggestions">
+                <strong>Suggestions de catégories :</strong>
+                <ul id="suggestionsList"></ul>
+            </div>
+            <div id="message"></div>
+        </div>
+    </div>
+    
     <!-- <button id="rollButtonInGame">Lancer les dés</button> -->
     <section class="flex flex-col gap-5 mt-24">
         <h1 class="text-3xl text-center">Jeu de YAMS</h1>
@@ -59,49 +109,7 @@
             </div>
         </div>
     </section>
-    <div id="game" style="display:none;">
-        <div id="currentPlayer">Joueur actuel : </div>
-        <div class="dice">
-            <div class="die" id="die0"></div>
-            <div class="die" id="die1"></div>
-            <div class="die" id="die2"></div>
-            <div class="die" id="die3"></div>
-            <div class="die" id="die4"></div>
-        </div>
-        <div class="controls">
-
-        </div>
-        <div class="scoreboard">
-            <table class="w-full border-collapse">
-                <thead>
-                    <tr>
-                        <th>Joueur</th>
-                        <th>As</th>
-                        <th>Deux</th>
-                        <th>Trois</th>
-                        <th>Quatre</th>
-                        <th>Cinq</th>
-                        <th>Six</th>
-                        <th>Brelan</th>
-                        <th>Carré</th>
-                        <th>Full House</th>
-                        <th>Petite Suite</th>
-                        <th>Grande Suite</th>
-                        <th>Yams</th>
-                        <th>Chance</th>
-                        <th>Total</th>
-                    </tr>
-                </thead>
-                <tbody id="scoreboardBody" class="w-full">
-                </tbody>
-            </table>
-        </div>
-        <div id="suggestions">
-            <strong>Suggestions de catégories :</strong>
-            <ul id="suggestionsList"></ul>
-        </div>
-        <div id="message"></div>
-    </div>
+    
     <script type="module" src="../js/script.js"></script>
 </body>
 
