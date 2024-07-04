@@ -1,4 +1,4 @@
-class Dice {
+class Die {
   constructor() {
     this.locked = false;
     this.valeur = 1;
@@ -33,12 +33,12 @@ class Dice {
 
   toggleLock() {
     this.locked = !this.locked;
-    if (this.locked) {
-      this.imageElement.classList.add("locked");
-    } else {
-      this.imageElement.classList.remove("locked");
-    }
+  }
+
+  reset() {
+    this.value = 0;
+    this.locked = false;
   }
 }
 
-export default Dice;
+export default Die;

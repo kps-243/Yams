@@ -19,29 +19,26 @@ const buttons = {
   six: document.querySelector("#buttonSix"),
 };
 
-var game = new YamsGame(["Alice", "Bob"]);
 var scoreBoard = new ScoreBoard(game);
-
-// document.getElementById("rollButton").addEventListener("click", () => {
-//     game.rollDice();
-// });
 
 document
   .getElementById("generate-grid")
-  .addEventListener("click", scoreBoard.afficheGrid);
+  .addEventListener("click", scoreBoard.generatePlayerInputs.bind(scoreBoard));
+
+var game = new YamsGame(["Alice", "Bob"]);
 
 game.dice.map((de) => de.updateDiceImage);
 
-console.log(`Rolled dice: ${game.displayDice()}`);
+// console.log(`Rolled dice: ${game.displayDice()}`);
 const player = game.currentPlayer();
-console.log(`It's ${player.name}'s turn`);
-
+// console.log(`It's ${player.name}'s turn`);
+// console.log(document.getElementById("rollButton"));
 document.getElementById("rollButton").addEventListener("click", () => {
-  let test = game.rollDice();
+  game.rollDice();
 
-  console.log(`Rolled dice: ${game.displayDice()}`);
+  // console.log(`Rolled dice: ${game.displayDice()}`);
   const player = game.currentPlayer();
-  console.log(`It's ${player.name}'s turn`);
+  // console.log(`It's ${player.name}'s turn`);
 
   game.dice.map((de) => de.updateDiceImage);
 
@@ -196,7 +193,7 @@ document.getElementById("rollButton").addEventListener("click", () => {
     for (let valeur in compte) {
       total += valeur * compte[valeur];
     }
-    scoreBoard.recordScore("chance", total);
+    scoreBoard.recordScore("chance", total, game.players.indexOf(player));
   }
 
   function isFullHouse(compte) {
@@ -228,17 +225,17 @@ document.getElementById("rollButton").addEventListener("click", () => {
 
   function addScore(valeur) {
     let total = valeur * compte[valeur];
-    scoreBoard.recordScore(valeur, total);
+    scoreBoard.recordScore(valeur, total, player);
   }
 });
-console.log(
-  `${player.name}'s lower section score: ${scoreBoard.totalLowerSection()}`
-); // Display lower section total
-console.log(
-  `${player.name}'s upper section score: ${scoreBoard.totalUpperSection()}`
-); // Display upper section total
-console.log(`${player.name}'s total score: ${scoreBoard.totalScore()}`); // Display total score
+// console.log(
+//   `${player.name}'s lower section score: ${scoreBoard.totalLowerSection()}`
+// ); // Display lower section total
+// console.log(
+//   `${player.name}'s upper section score: ${scoreBoard.totalUpperSection()}`
+// ); // Display upper section total
+// console.log(`${player.name}'s total score: ${scoreBoard.totalScore()}`); // Display total score
 
-game.nextTurn();
+// game.nextTurn();
 
-console.log(game.currentPlayer());
+// console.log(game.currentPlayer());
