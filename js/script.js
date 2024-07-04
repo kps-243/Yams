@@ -393,12 +393,20 @@ class YamsGame {
     const diceGeometry = new THREE.BoxGeometry(1, 1, 1);
     this.diceMeshes = [];
 
-    for (let i = 0; i < 5; i++) {
+    const dicePositions = [
+      { x: -3, y: 0.5, z: -3 },
+      { x: -3, y: 0.5, z: 3 },
+      { x: 3, y: 0.5, z: -3 },
+      { x: 3, y: 0.5, z: 3 },
+      { x: 0, y: 0.5, z: 0 },
+    ];
+
+    dicePositions.forEach((pos, index) => {
       const dice = new THREE.Mesh(diceGeometry, materials);
-      dice.position.set(i * 1.5 - 3, 0.5, 0); // Position initiale des dés
+      dice.position.set(pos.x, pos.y, pos.z);
       scene.add(dice);
       this.diceMeshes.push(dice);
-    }
+    });
 
     // Créer le plateau circulaire
     const circleGeometry = new THREE.CircleGeometry(7, 32);
@@ -468,6 +476,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("setupButton").onclick = () => {
     const numPlayers = parseInt(document.getElementById("numPlayers").value);
     const playerInputs = document.getElementById("playerInputs");
+    playerInputs.style.display = "block";
     playerInputs.innerHTML = "";
     for (let i = 0; i < numPlayers; i++) {
       const input = document.createElement("input");
@@ -476,8 +485,6 @@ document.addEventListener("DOMContentLoaded", () => {
       input.id = `player${i}`;
       playerInputs.appendChild(input);
     }
-    playerInputs.style.display = "flex";
-    document.getElementById("setupButton").style.display = "none";
     document.getElementById("startButton").style.display = "block";
   };
 
