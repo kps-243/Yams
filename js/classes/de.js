@@ -23,11 +23,11 @@ class Dice {
       let valeur = Math.floor(Math.random() * 6) + 1;
       this.updateDiceImage(valeur);
       this.valeur = valeur;
+      //console.log(`Dice value: ${valeur}`); // Ajoutez ce console.log pour voir la valeur générée
     }
   }
 
   updateDiceImage(value) {
-    //console.log(this.imageElement);
     this.imageElement.src = `../image/dice${value}.png`;
   }
 
