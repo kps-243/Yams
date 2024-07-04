@@ -76,6 +76,7 @@ class YamsGame {
     this.round = 1;
     this.maxRounds = 13;
     this.rolls = 0;
+    this.isRolling = false;
     this.initializeScoreboard();
     this.updateCurrentPlayerDisplay();
     this.addDieClickEvents();
@@ -211,7 +212,7 @@ class YamsGame {
     this.rolls = 0;
     this.resetDice();
 
-    const rollButton = document.getElementById("rollButton");
+    const rollButton = document.getElementById("rollButtonInGame");
 
     rollButton.onclick = () => {
       if (this.rolls < 3) {
@@ -395,8 +396,6 @@ class YamsGame {
     for (let i = 0; i < 5; i++) {
       const dice = new THREE.Mesh(diceGeometry, materials);
       dice.position.set(i * 1.5 - 3, 0.5, 0); // Position initiale des dés
-      // Ajuster la rotation pour que la face 1 soit visible
-      dice.rotation.set(Math.PI / 2, 0, Math.PI / 2);
       scene.add(dice);
       this.diceMeshes.push(dice);
     }
@@ -464,6 +463,8 @@ class YamsGame {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  let game;
+
   document.getElementById("setupButton").onclick = () => {
     const numPlayers = parseInt(document.getElementById("numPlayers").value);
     const playerInputs = document.getElementById("playerInputs");
@@ -475,6 +476,8 @@ document.addEventListener("DOMContentLoaded", () => {
       input.id = `player${i}`;
       playerInputs.appendChild(input);
     }
+    playerInputs.style.display = "flex";
+    document.getElementById("setupButton").style.display = "none";
     document.getElementById("startButton").style.display = "block";
   };
 
@@ -491,7 +494,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (players.length === numPlayers) {
       document.getElementById("setup").style.display = "none";
       document.getElementById("game").style.display = "block";
-      const game = new YamsGame(players);
+      game = new YamsGame(players);
       game.start();
     } else {
       alert("Veuillez entrer les noms de tous les joueurs.");
@@ -499,7 +502,8 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   document.getElementById("rollButton").onclick = () => {
-    const game = new YamsGame([]);
-    game.rollDice();
+    if (game) {
+      game.rollDice();
+    }
   };
 });

@@ -48,16 +48,19 @@
             <div class="flex flex-col gap-10 ">
                 <div id="playerInputs" style="display:none;" class="flex flex-col gap-2"></div>
                 <div class="flex gap-5">
-                    <button id="setupButton" class="-mt-2 lg:px-6 px-4 py-2 h-fit bg-red-500 rounded-[75px] flex items-center text-white gap-4 hover:bg-blue-500 transition-all">Configurer les joueurs</button>
-                    <button id="startButton" style="display:none;" class="-mt-2 lg:px-6 px-4 py-2 h-fit bg-red-500 rounded-[75px] flex items-center text-white gap-4 hover:bg-blue-500 transition-all">Démarrer le jeu</button>
+                    <button id="setupButton"
+                        class="-mt-2 lg:px-6 px-4 py-2 h-fit bg-red-500 rounded-[75px] flex items-center text-white gap-4 hover:bg-blue-500 transition-all">Configurer
+                        les joueurs</button>
+                    <button id="startButton" style="display:none;"
+                        class="-mt-2 lg:px-6 px-4 py-2 h-fit bg-red-500 rounded-[75px] flex items-center text-white gap-4 hover:bg-blue-500 transition-all">Démarrer
+                        le jeu</button>
                 </div>
             </div>
         </div>
     </section>
     <div id="game" style="display:none;">
         <div id="currentPlayer">Joueur actuel : </div>
-        <div class="dice" id="threejs-container"></div>
-        <div id="threejs-container">
+        <div class="dice">
             <div class="die" id="die0"></div>
             <div class="die" id="die1"></div>
             <div class="die" id="die2"></div>
@@ -65,7 +68,7 @@
             <div class="die" id="die4"></div>
         </div>
         <div class="controls">
-            <button id="rollButton">Lancer les dés</button>
+            <button id="rollButtonInGame">Lancer les dés</button>
         </div>
         <div class="scoreboard">
             <table class="w-full border-collapse">
