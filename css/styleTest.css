@@ -1,7 +1,11 @@
 body {
-  font-family: "Helvetica Neue", sans-serif;
-  color: #333;
-}
+    font-family: "Helvetica Neue", sans-serif;
+    color: #333;
+    height: 100vh;
+    background: url("../image/DALLE-2024-07-04-17.09.webp") no-repeat center center;
+    background-size: cover;
+    color: white;
+  }  
 
 .die {
   width: 60px;
