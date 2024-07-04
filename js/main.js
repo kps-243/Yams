@@ -21,7 +21,6 @@ const buttons = {
 
 var scoreBoard = new ScoreBoard(game);
 
-
 document
   .getElementById("generate-grid")
   .addEventListener("click", scoreBoard.generatePlayerInputs.bind(scoreBoard));
@@ -30,16 +29,16 @@ var game = new YamsGame(["Alice", "Bob"]);
 
 game.dice.map((de) => de.updateDiceImage);
 
-console.log(`Rolled dice: ${game.displayDice()}`);
+// console.log(`Rolled dice: ${game.displayDice()}`);
 const player = game.currentPlayer();
-console.log(`It's ${player.name}'s turn`);
-console.log(document.getElementById("rollButton"));
+// console.log(`It's ${player.name}'s turn`);
+// console.log(document.getElementById("rollButton"));
 document.getElementById("rollButton").addEventListener("click", () => {
   game.rollDice();
 
-  console.log(`Rolled dice: ${game.displayDice()}`);
+  // console.log(`Rolled dice: ${game.displayDice()}`);
   const player = game.currentPlayer();
-  console.log(`It's ${player.name}'s turn`);
+  // console.log(`It's ${player.name}'s turn`);
 
   game.dice.map((de) => de.updateDiceImage);
 
@@ -47,8 +46,6 @@ document.getElementById("rollButton").addEventListener("click", () => {
 
   const valeurs = game.dice.map((de) => de.valeur);
   const compte = {};
-
-
 
   valeurs.forEach((valeur) => {
     if (compte[valeur]) {
@@ -231,14 +228,14 @@ document.getElementById("rollButton").addEventListener("click", () => {
     scoreBoard.recordScore(valeur, total, player);
   }
 });
-console.log(
-  `${player.name}'s lower section score: ${scoreBoard.totalLowerSection()}`
-); // Display lower section total
-console.log(
-  `${player.name}'s upper section score: ${scoreBoard.totalUpperSection()}`
-); // Display upper section total
-console.log(`${player.name}'s total score: ${scoreBoard.totalScore()}`); // Display total score
+// console.log(
+//   `${player.name}'s lower section score: ${scoreBoard.totalLowerSection()}`
+// ); // Display lower section total
+// console.log(
+//   `${player.name}'s upper section score: ${scoreBoard.totalUpperSection()}`
+// ); // Display upper section total
+// console.log(`${player.name}'s total score: ${scoreBoard.totalScore()}`); // Display total score
 
-game.nextTurn();
+// game.nextTurn();
 
-console.log(game.currentPlayer());
+// console.log(game.currentPlayer());

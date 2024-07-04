@@ -1,27 +1,44 @@
 class Die {
   constructor() {
-      this.value = 1;
-      this.locked = false;
+    this.locked = false;
+    this.valeur = 1;
+    //this.valeur = this.throw();
+
+    this.imageElement = document.createElement("img");
+    this.imageElement.classList.add("diceImage");
+    this.imageElement.src = `../image/dice${this.valeur}.png`;
+    this.imageElement.alt = "Dice";
+    this.imageElement.width = 300;
+    this.imageElement.height = 200;
+
+    // this.imageElement.addEventListener("click", () => {
+    //   this.toggleLock();
+    // });
+
+    // document.querySelector(".dices").appendChild(this.imageElement);
   }
 
-  roll() {
-      if (!this.locked) {
-          this.value = Math.floor(Math.random() * 6) + 1;
-      }
+  throw() {
+    if (!this.locked) {
+      let valeur = Math.floor(Math.random() * 6) + 1;
+      this.updateDiceImage(valeur);
+      this.valeur = valeur;
+    }
   }
 
-  getValue() {
-      return this.value;
+  updateDiceImage(value) {
+    //console.log(this.imageElement);
+    this.imageElement.src = `../image/dice${value}.png`;
   }
 
   toggleLock() {
-      this.locked = !this.locked;
+    this.locked = !this.locked;
   }
 
   reset() {
-      this.value = 0;
-      this.locked = false;
+    this.value = 0;
+    this.locked = false;
   }
 }
 
-export default Die
+export default Die;
