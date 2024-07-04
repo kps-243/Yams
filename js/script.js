@@ -231,6 +231,14 @@ class YamsGame {
     const player = this.players[this.currentPlayerIndex];
     if (player.scoreSheet[category] === null) {
       const score = this.calculateScore(category);
+      if(score === 0)
+      {
+        var conf = confirm("Voulez vous vraiment mettre 0 dans la catégorie : " + category + "?");
+      } if(!conf)
+      {
+        this.nextPlayer();
+        return;
+      }
       player.addScore(category, score);
       this.updateScoreboard();
       this.nextPlayer();
