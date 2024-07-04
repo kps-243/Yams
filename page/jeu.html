@@ -1,38 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Time</title>
+    <title>Jeu de YAMS</title>
+    <link rel="stylesheet" href="../css/stylejeu.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="icon" type="image/png" href="../image/Logo.webp" />
-    <style>
-        #threejs-container {
-            width: 80%;
-            height: 80%;
-            position: relative;
-        }
-    </style>
     <script type="importmap">
-            {
-              "imports": {
-                "three": "https://cdn.jsdelivr.net/npm/three@v0.166.1/build/three.module.js",
-                "three/addons/": "https://cdn.jsdelivr.net/npm/three@v0.166.1/examples/jsm/"
-              }
-            }
-        </script>
+        {
+          "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@v0.166.1/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@v0.166.1/examples/jsm/"
+          }
+        }
+    </script>
 </head>
 
-<body>
-    <header class="container mx-auto mt-5">
-        <nav class="flex justify-between items-center px-12 bg-[#F5F3E2] shadow-lg w-full rounded-[75px]">
-            <a href="" class="py-2">
+<body class="font-sans">
+    <div class="parallax"></div>
+
+    <header class="container mx-auto mt-5 px-4 lg:px-0 animate__animated animate__fadeInDown">
+        <nav class="flex justify-between items-center px-5 lg:px-12 bg-[#F5F3E2] shadow-lg w-full rounded-[75px]">
+            <a href="/" class="py-2">
                 <div class="w-fit h-16 lg:h-24">
                     <img src="../image/Logo-yams.webp" alt="Logo - YAMS" class="h-full w-fit object-contain">
                 </div>
             </a>
-            <a class="lg:px-6 px-4 py-2 h-fit bg-red-500 rounded-[75px] flex items-center text-white gap-4 hover:bg-white hover:text-black transition-all"
+            <a class="lg:px-6 px-2 text-sm lg:text-base py-2 h-fit bg-red-500 rounded-[75px] flex items-center text-white gap-4 hover:bg-white hover:text-black transition-all"
                 href="">
                 <div class="w-fit h-10">
                     <img src="../image/sitcker-de.webp" alt="" class="w-fit h-full object-contain">
@@ -41,62 +37,78 @@
             </a>
         </nav>
     </header>
-    <!-- ici mettre code dés -->
-    <!-- Anime 5d dés -->
-    <div id="threejs-container"></div>
-    <button id="rollButton"
-        class="lg:px-6 px-4 py-2 h-fit bg-blue-500 rounded-[75px] flex items-center text-white gap-4 hover:bg-[#F5F3E2] hover:text-black transition-all">Lancer
-        le dé</button>
-    <!-- <section id="suggestion" class="container mx-auto">
-            <div class="flex flex-col gap-3 my-5">
-                <h2>Section Supérieure</h2>
-                <div id="upper-section" class="button-container flex gap-5">
-                    <button class="lg:px-6 px-4 py-2 h-fit bg-blue-500 rounded-[75px] flex items-center text-white gap-4 hover:bg-[#F5F3E2] hover:text-black transition-all" id="buttonAs">AS</button>
-                    <button class="lg:px-6 px-4 py-2 h-fit bg-blue-500 rounded-[75px] flex items-center text-white gap-4 hover:bg-[#F5F3E2] hover:text-black transition-all" id="buttonDeux">DEUX</button>
-                    <button class="lg:px-6 px-4 py-2 h-fit bg-blue-500 rounded-[75px] flex items-center text-white gap-4 hover:bg-[#F5F3E2] hover:text-black transition-all" id="buttonTrois">TROIS</button>
-                    <button class="lg:px-6 px-4 py-2 h-fit bg-blue-500 rounded-[75px] flex items-center text-white gap-4 hover:bg-[#F5F3E2] hover:text-black transition-all" id="buttonQuatre">QUATRE</button>
-                    <button class="lg:px-6 px-4 py-2 h-fit bg-blue-500 rounded-[75px] flex items-center text-white gap-4 hover:bg-[#F5F3E2] hover:text-black transition-all" id="buttonCinq">CINQ</button>
-                    <button class="lg:px-6 px-4 py-2 h-fit bg-blue-500 rounded-[75px] flex items-center text-white gap-4 hover:bg-[#F5F3E2] hover:text-black transition-all" id="buttonSix">SIX</button>
-                </div>
-            </div>
-        
-            <div class="flex flex-col gap-3 my-5">
-                <h2>Section Inférieure</h2>
-                <div id="lower-section" class="button-container flex gap-5">
-                    <button class="lg:px-6 px-4 py-2 h-fit bg-blue-500 rounded-[75px] flex items-center text-white gap-4 hover:bg-[#F5F3E2] hover:text-black transition-all" id="buttonBrelan">BRELAN</button>
-                    <button class="lg:px-6 px-4 py-2 h-fit bg-blue-500 rounded-[75px] flex items-center text-white gap-4 hover:bg-[#F5F3E2] hover:text-black transition-all" id="buttonFullHouse">FULL</button>
-                    <button class="lg:px-6 px-4 py-2 h-fit bg-blue-500 rounded-[75px] flex items-center text-white gap-4 hover:bg-[#F5F3E2] hover:text-black transition-all" id="buttonCarre">CARRE</button>
-                    <button class="lg:px-6 px-4 py-2 h-fit bg-blue-500 rounded-[75px] flex items-center text-white gap-4 hover:bg-[#F5F3E2] hover:text-black transition-all" id="buttonPetiteSuite">PETITE</button>
-                    <button class="lg:px-6 px-4 py-2 h-fit bg-blue-500 rounded-[75px] flex items-center text-white gap-4 hover:bg-[#F5F3E2] hover:text-black transition-all" id="buttonGrandeSuite">GRANDE</button>
-                    <button class="lg:px-6 px-4 py-2 h-fit bg-blue-500 rounded-[75px] flex items-center text-white gap-4 hover:bg-[#F5F3E2] hover:text-black transition-all" id="buttonYams">YAMS</button>
-                    <button class="lg:px-6 px-4 py-2 h-fit bg-blue-500 rounded-[75px] flex items-center text-white gap-4 hover:bg-[#F5F3E2] hover:text-black transition-all" id="buttonChance">CHANCE</button>
-                </div>
-            </div>
-        </div>
-        </section> -->
-    <!-- grilles de jeu -->
-    <section class="container mx-auto w-full flex flex-col lg:flex-row mt-24">
-        <div class="w-full lg:w-1/3"></div>
-        <div class="w-full lg:w-2/3">
-            <div class="mb-4">
-                <label for="number-of-players" class="block mb-2">Nombre de joueurs :</label>
-                <input type="number" id="number-of-players" class="border p-2" min="2" value="2">
-                <button id="generate-grid"
-                    class="lg:px-6 px-4 py-2 h-fit bg-blue-500 rounded-[75px] flex items-center text-white gap-4 hover:bg-[#F5F3E2] hover:text-black transition-all">Générer</button>
-            </div>
-            <div id="generate-player-inputs"></div>
-            <div id="grid-container"></div>
+    <h1 class="text-3xl text-center mt-10 text-white">Jeu de YAMS</h1>
+    <main class="container mx-auto flex flex-col lg:flex-row gap-10 mt-10 px-4 lg:px-0 pb-20">
 
-            <div id="grid-container" class="w-full overflow-auto rounded-xl shadow-3xl">
-                <!-- La grille dynamique sera générée ici -->
+        <div id="de" class="w-full lg:w-1/2 flex flex-col items-center" style="display: none;">
+            <div id="threejs-container" class="w-full h-64 lg:h-96"></div>
+            <div class="flex flex-col items-center gap-4">
+                <div class="flex justify-center gap-2 lg:gap-4 mt-4">
+                    <div class="die w-16 h-16 flex items-center justify-center bg-white border border-gray-300 rounded-lg shadow-md"
+                        id="die0"></div>
+                    <div class="die w-16 h-16 flex items-center justify-center bg-white border border-gray-300 rounded-lg shadow-md"
+                        id="die1"></div>
+                    <div class="die w-16 h-16 flex items-center justify-center bg-white border border-gray-300 rounded-lg shadow-md"
+                        id="die2"></div>
+                    <div class="die w-16 h-16 flex items-center justify-center bg-white border border-gray-300 rounded-lg shadow-md"
+                        id="die3"></div>
+                    <div class="die w-16 h-16 flex items-center justify-center bg-white border border-gray-300 rounded-lg shadow-md"
+                        id="die4"></div>
+                </div>
+                <button id="rollButtonInGame"
+                    class="mt-4 px-6 py-2 bg-blue-500 rounded-lg text-white hover:bg-blue-400 transition-all">
+                    Lancer le dé
+                </button>
             </div>
+            
         </div>
 
-    </section>
-
-
+        <div id="game" class="w-full lg:w-1/2" style="display:none;">
+            <div id="currentPlayer" class="text-2xl font-bold mb-4 text-white">Joueur actuel : </div>
+            <div class="controls mb-4"></div>
+            <div id="suggestions" class="mt-4 text-white">
+                <strong>Suggestions de catégories :</strong>
+                <ul id="suggestionsList" class="list-none p-0 text-black"></ul>
+            </div>
+            <div id="message" class="mt-4 text-red-500 font-bold"></div>
+            <div class="scoreboard bg-white shadow-md rounded-lg overflow-x-auto">
+                <table class="min-w-full border-collapse">
+                    <thead>
+                      <tr>
+                        <th class="p-2 border-b">Catégorie</th>
+                        <!-- Les en-têtes de colonne pour chaque joueur seront ajoutés ici dynamiquement -->
+                      </tr>
+                    </thead>
+                    <tbody id="scoreboardBody">
+                      <!-- Les lignes pour chaque catégorie seront ajoutées ici dynamiquement -->
+                    </tbody>
+                  </table>
+            </div>
+            
+        </div>
+        <section id="setup" class="container mx-auto flex flex-col gap-5 mt-10 justify-center items-center">
+            <div class="flex flex-col gap-4">
+                <div class="flex gap-2 items-center">
+                    <label for="numPlayers" class="block font-medium text-white">Nombre de joueurs :</label>
+                    <input type="number" id="numPlayers" min="1" max="6" class="border px-4 py-2 rounded-lg">
+                </div>
+                <div class="flex flex-col gap-4">
+                    <div id="playerInputs" style="display:none;" class="flex flex-col gap-2"></div>
+                    <div class="flex gap-5 justify-end">
+                        <button id="setupButton"
+                            class="px-6 py-2 bg-red-500 rounded-lg text-white hover:bg-blue-500 transition-all">
+                            Configurer les joueurs
+                        </button>
+                        <button id="startButton" style="display:none;"
+                            class="px-6 py-2 bg-red-500 rounded-lg text-white hover:bg-blue-500 transition-all">
+                            Démarrer le jeu
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>    
+    </main>
+    <script type="module" src="../js/script.js"></script>
 </body>
-<!-- <script type="module" src="../js/main.js"></script> -->
-<script type="module" src="../js/three.js"></script>
 
 </html>
