@@ -4,11 +4,13 @@ body {
     flex-direction: column;
     align-items: center;
 }
+
 .dice {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
 }
+
 .die {
     width: 50px;
     height: 50px;
@@ -20,47 +22,58 @@ body {
     font-size: 24px;
     cursor: pointer;
 }
+
 .die.locked {
     background-color: #ccc;
 }
+
 .scoreboard {
     margin: 20px 0;
 }
+
 .scoreboard table {
     width: 100%;
     border-collapse: collapse;
 }
+
 .scoreboard th, .scoreboard td {
     border: 1px solid #000;
     padding: 10px;
     text-align: center;
     cursor: pointer;
 }
+
 .controls {
     display: flex;
     justify-content: center;
     margin-top: 20px;
 }
+
 .controls button {
     padding: 10px 20px;
     margin: 0 10px;
 }
+
 #currentPlayer {
     font-weight: bold;
     margin-bottom: 20px;
 }
+
 #message {
     margin-top: 20px;
     color: red;
     font-weight: bold;
 }
+
 #suggestions {
     margin-top: 20px;
 }
+
 #suggestions ul {
     list-style-type: none;
     padding: 0;
 }
+
 #suggestions li {
     cursor: pointer;
     padding: 5px;
@@ -68,45 +81,44 @@ body {
     margin: 5px;
     display: inline-block;
 }
-/* .scoreboard thead,
-.scoreboard tbody,
-.scoreboard th,
-.scoreboard td,
+
+/* Vertical table layout for all screens */
+.scoreboard table {
+    display: block;
+}
+
+.scoreboard thead {
+    display: none;
+}
+
 .scoreboard tr {
-    display: table-row-group;
-} */
+    display: block;
+    margin-bottom: 10px;
+}
 
-/* Styles pour les écrans mobiles */
-@media screen and (max-width: 768px) {
-    .scoreboard table {
-        display: block;
-    }
+.scoreboard td {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border: 1px solid #000;
+    text-align: left;
+    position: relative;
+}
 
-    .scoreboard thead {
-        display: none;
-    }
+.scoreboard td::before {
+    content: attr(data-category);
+    font-weight: bold;
+    text-transform: capitalize;
+    margin-right: 10px;
+    display: block;
+}
 
-    .scoreboard tr {
-        display: block;
-        margin-bottom: 10px;
-    }
+.scoreboard td:first-child::before {
+    content: "Joueur";
+}
 
-    .scoreboard td {
-        display: flex;
-        justify-content: space-between;
-        padding: 10px;
-        border: 1px solid #000;
-        text-align: left;
-    }
-
-    .scoreboard td::before {
-        content: attr(data-category);
-        font-weight: bold;
-        text-transform: capitalize;
-        margin-right: 10px;
-    }
-
-    .scoreboard td:first-child::before {
-        content: "Joueur";
-    }
+#threejs-container {
+    width: 80%;
+    height: 80vh; /* Vous pouvez ajuster la hauteur selon vos besoins */
+    margin: 0 auto; /* Centrer horizontalement */
 }

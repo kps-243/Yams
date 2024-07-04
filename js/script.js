@@ -88,34 +88,35 @@ class YamsGame {
     const tbody = document.getElementById("scoreboardBody");
     tbody.innerHTML = "";
     this.players.forEach((player, index) => {
-      const row = document.createElement("tr");
-      row.id = `player${index}`;
-      row.innerHTML = `
-                <td>${player.name}</td>
-                <td id="player${index}-as" data-category="as"></td>
-                <td id="player${index}-deux" data-category="deux"></td>
-                <td id="player${index}-trois" data-category="trois"></td>
-                <td id="player${index}-quatre" data-category="quatre"></td>
-                <td id="player${index}-cinq" data-category="cinq"></td>
-                <td id="player${index}-six" data-category="six"></td>
-                <td id="player${index}-brelan" data-category="brelan"></td>
-                <td id="player${index}-carre" data-category="carre"></td>
-                <td id="player${index}-fullHouse" data-category="fullHouse"></td>
-                <td id="player${index}-petiteSuite" data-category="petiteSuite"></td>
-                <td id="player${index}-grandeSuite" data-category="grandeSuite"></td>
-                <td id="player${index}-yams" data-category="yams"></td>
-                <td id="player${index}-chance" data-category="chance"></td>
-                <td id="player${index}-total"></td>
-            `;
-      tbody.appendChild(row);
+        const row = document.createElement("tr");
+        row.id = `player${index}`;
+        row.innerHTML = `
+            <td data-category="Joueur">${player.name}</td>
+            <td id="player${index}-as" data-category="as"></td>
+            <td id="player${index}-deux" data-category="deux"></td>
+            <td id="player${index}-trois" data-category="trois"></td>
+            <td id="player${index}-quatre" data-category="quatre"></td>
+            <td id="player${index}-cinq" data-category="cinq"></td>
+            <td id="player${index}-six" data-category="six"></td>
+            <td id="player${index}-brelan" data-category="brelan"></td>
+            <td id="player${index}-carre" data-category="carre"></td>
+            <td id="player${index}-fullHouse" data-category="fullHouse"></td>
+            <td id="player${index}-petiteSuite" data-category="petiteSuite"></td>
+            <td id="player${index}-grandeSuite" data-category="grandeSuite"></td>
+            <td id="player${index}-yams" data-category="yams"></td>
+            <td id="player${index}-chance" data-category="chance"></td>
+            <td id="player${index}-total" data-category="total"></td>
+        `;
+        tbody.appendChild(row);
     });
 
     tbody.querySelectorAll("td[data-category]").forEach((cell) => {
-      cell.addEventListener("click", () => {
-        this.markScore(cell);
-      });
+        cell.addEventListener("click", () => {
+            this.markScore(cell);
+        });
     });
-  }
+}
+
 
   addDieClickEvents() {
     document.querySelectorAll(".die").forEach((dieElement, index) => {
@@ -367,31 +368,27 @@ class YamsGame {
   setupThreeJS() {
     // Scène et caméra
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(
-      75,
-      window.innerWidth / window.innerHeight,
-      0.1,
-      1000
-    );
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
     // Renderer
     const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    const container = document.getElementById('threejs-container');
+    renderer.setSize(container.clientWidth, container.clientHeight);
+    renderer.setClearColor(0xffffff, 1); // Définir la couleur de fond en blanc
     renderer.setAnimationLoop(this.animate.bind(this));
 
     // Ajouter le renderer au container
-    const container = document.getElementById("threejs-container");
     container.appendChild(renderer.domElement);
 
     // Charger les textures des dés
-    const loader = new TextureLoader();
+    const loader = new THREE.TextureLoader();
     const materials = [
-      new THREE.MeshBasicMaterial({ map: loader.load("../image/dice1.png") }),
-      new THREE.MeshBasicMaterial({ map: loader.load("../image/dice2.png") }),
-      new THREE.MeshBasicMaterial({ map: loader.load("../image/dice3.png") }),
-      new THREE.MeshBasicMaterial({ map: loader.load("../image/dice4.png") }),
-      new THREE.MeshBasicMaterial({ map: loader.load("../image/dice5.png") }),
-      new THREE.MeshBasicMaterial({ map: loader.load("../image/dice6.png") }),
+        new THREE.MeshBasicMaterial({ map: loader.load('../image/dice1.png') }),
+        new THREE.MeshBasicMaterial({ map: loader.load('../image/dice2.png') }),
+        new THREE.MeshBasicMaterial({ map: loader.load('../image/dice3.png') }),
+        new THREE.MeshBasicMaterial({ map: loader.load('../image/dice4.png') }),
+        new THREE.MeshBasicMaterial({ map: loader.load('../image/dice5.png') }),
+        new THREE.MeshBasicMaterial({ map: loader.load('../image/dice6.png') }),
     ];
 
     // Créer des dés avec des positions espacées
@@ -399,18 +396,18 @@ class YamsGame {
     this.diceMeshes = [];
 
     const dicePositions = [
-      { x: -3, y: 0.5, z: -3 },
-      { x: -3, y: 0.5, z: 3 },
-      { x: 3, y: 0.5, z: -3 },
-      { x: 3, y: 0.5, z: 3 },
-      { x: 0, y: 0.5, z: 0 },
+        { x: -3, y: 0.5, z: -3 },
+        { x: -3, y: 0.5, z: 3 },
+        { x: 3, y: 0.5, z: -3 },
+        { x: 3, y: 0.5, z: 3 },
+        { x: 0, y: 0.5, z: 0 },
     ];
 
     dicePositions.forEach((pos, index) => {
-      const dice = new THREE.Mesh(diceGeometry, materials);
-      dice.position.set(pos.x, pos.y, pos.z);
-      scene.add(dice);
-      this.diceMeshes.push(dice);
+        const dice = new THREE.Mesh(diceGeometry, materials);
+        dice.position.set(pos.x, pos.y, pos.z);
+        scene.add(dice);
+        this.diceMeshes.push(dice);
     });
 
     // Créer le plateau circulaire
@@ -427,7 +424,16 @@ class YamsGame {
     this.renderer = renderer;
     this.scene = scene;
     this.camera = camera;
-  }
+
+    // Ajuster la taille du renderer lors du redimensionnement de la fenêtre
+    window.addEventListener('resize', () => {
+        const width = container.clientWidth;
+        const height = container.clientHeight;
+        renderer.setSize(width, height);
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+    });
+}
 
   updateThreeJSDice() {
     this.dice.forEach((die, index) => {
