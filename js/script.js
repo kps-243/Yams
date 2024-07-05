@@ -548,6 +548,7 @@ class YamsGame {
 
   loadSound() {
     this.rollSound = new Audio("../sound/roll.mp3"); // Remplacez par le chemin correct de votre fichier son
+    this.rollSound.volume = 1.0; // Volume maximum pour le son des dés
   }
 
   playRollSound() {
@@ -635,6 +636,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // Musique de fond
   const backgroundMusic = document.getElementById("backgroundMusic");
   const soundControlButton = document.getElementById("soundControlButton");
+
+  backgroundMusic.volume = 0.3; // Réglez le volume de la musique de fond à 30%
 
   let isMusicPlaying = false;
 
