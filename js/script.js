@@ -89,11 +89,11 @@ class YamsGame {
   initializeScoreboard() {
     const theadRow = document.querySelector("thead tr");
     const tbody = document.getElementById("scoreboardBody");
-  
+
     // Clear the table body and header
     theadRow.innerHTML = '<th class="p-2 border-b">Catégorie</th>';
     tbody.innerHTML = "";
-  
+
     // Add headers for each player
     this.players.forEach((player, index) => {
       const th = document.createElement("th");
@@ -101,13 +101,25 @@ class YamsGame {
       th.textContent = player.name;
       theadRow.appendChild(th);
     });
-  
+
     // Define categories
     const categories = [
-      "As", "Deux", "Trois", "Quatre", "Cinq", "Six", "Brelan", "Carre", "Full House",
-      "Petite Suite", "Grande Suite", "Yams", "Chance", "Total"
+      "As",
+      "Deux",
+      "Trois",
+      "Quatre",
+      "Cinq",
+      "Six",
+      "Brelan",
+      "Carre",
+      "Full House",
+      "Petite Suite",
+      "Grande Suite",
+      "Yams",
+      "Chance",
+      "Total",
     ];
-  
+
     // Add rows for each category
     categories.forEach((category) => {
       const row = document.createElement("tr");
@@ -115,29 +127,34 @@ class YamsGame {
       categoryCell.className = "p-2 border-b";
       categoryCell.textContent = category;
       row.appendChild(categoryCell);
-  
+
       this.players.forEach((player, index) => {
         const cell = document.createElement("td");
         cell.id = `player${index}-${category.toLowerCase().replace(" ", "")}`;
         cell.dataset.category = category.toLowerCase().replace(" ", "");
         row.appendChild(cell);
-  
+
         // Add event listener for each cell
         cell.addEventListener("click", () => {
           this.markScore(cell);
         });
       });
-  
+
       tbody.appendChild(row);
     });
   }
-  
 
   addDieClickEvents() {
     document.querySelectorAll(".die").forEach((dieElement, index) => {
       dieElement.addEventListener("click", () => {
         this.dice[index].toggleLock();
         dieElement.classList.toggle("locked");
+
+        if (this.dice[index].locked) {
+          dieElement.style.border = "2px solid red";
+        } else {
+          dieElement.style.border = "2px solid #ddd";
+        }
       });
     });
   }
@@ -146,10 +163,8 @@ class YamsGame {
     this.isRolling = true;
     this.playRollSound();
 
-    // Lancer chaque dé
     this.dice.forEach((die) => die.roll());
 
-    // Arrêter l'animation après 3 secondes
     clearTimeout(this.stopRollTimeout);
     var btn = document.getElementById("rollButtonInGame");
     btn.disabled = true;
@@ -160,7 +175,6 @@ class YamsGame {
     this.isRolling = false;
     var btn = document.getElementById("rollButtonInGame");
     btn.disabled = false;
-    // Mettre à jour l'affichage des dés
     this.updateDiceDisplay();
     this.updateSuggestions();
   }
@@ -169,8 +183,14 @@ class YamsGame {
     this.dice.forEach((die, index) => {
       const dieElement = document.getElementById(`die${index}`);
       if (dieElement) {
-        dieElement.textContent = die.getValue();
+        dieElement.src = `../image/dice${die.getValue()}.png`;
         dieElement.classList.toggle("locked", die.locked);
+
+        if (die.locked) {
+          dieElement.style.border = "2px solid red";
+        } else {
+          dieElement.style.border = "2px solid #ddd";
+        }
       }
     });
     this.updateThreeJSDice();
@@ -264,13 +284,11 @@ class YamsGame {
       }
       player.addScore(category, score);
 
-      // Vérifier si le joueur a rempli la partie haute
       const upperCategories = ["as", "deux", "trois", "quatre", "cinq", "six"];
       const upperTotal = upperCategories.reduce((total, cat) => {
         return total + (player.scoreSheet[cat] || 0);
       }, 0);
 
-      // Si le total de la partie haute est >= 63, ajouter le bonus
       if (upperTotal >= 63) {
         alert(
           "Félicitations ! vous avez atteint au moins 63 points avec la partie haute ! vous allez donc bénificier de 35 points Bonus !"
@@ -292,7 +310,6 @@ class YamsGame {
         const cell = document.getElementById(`player${index}-${category}`);
         if (cell) {
           cell.textContent = player.scoreSheet[category];
-
         }
       });
       document.getElementById(`player${index}-total`).textContent =
@@ -303,6 +320,7 @@ class YamsGame {
   resetDice() {
     this.dice.forEach((die) => die.reset());
     this.updateDiceDisplay();
+    this.updateSuggestions();
   }
 
   nextPlayer() {
@@ -350,7 +368,6 @@ class YamsGame {
     const availableCategories = player.getAvailableCategories();
     const counts = this.countDiceValues();
     const values = this.getDiceValues();
-
 
     // Filtrer les catégories possibles en fonction des dés actuels
     const possibleCategories = availableCategories.filter((category) => {
@@ -581,7 +598,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  document.getElementById("rollButton").onclick = () => {
+  document.getElementById("rollButtonInGame").onclick = () => {
     if (game) {
       game.rollDice();
     }

@@ -37,11 +37,12 @@
             </a>
         </nav>
     </header>
-    
+
     <main class="container mx-auto flex flex-col gap-10 mt-10 px-4 lg:px-0 pb-20">
         <h1 class="text-3xl text-center mt-10 text-white">Jeu de YAMS</h1>
         <div class="container mx-auto flex flex-col lg:flex-row gap-10">
-            <section id="setup" class="setup-container mx-auto w-1/2 rounded-xl bg-[#F5F3E2] flex flex-col gap-8 py-3 px-2">
+            <section id="setup"
+                class="setup-container mx-auto w-1/2 rounded-xl bg-[#F5F3E2] flex flex-col gap-8 py-3 px-2">
                 <div class="flex flex-col gap-4">
                     <div class="flex flex-col gap-2 items-center">
                         <label for="numPlayers" class="block font-medium text-black">Nombre de joueurs :</label>
@@ -66,16 +67,11 @@
                 <div id="threejs-container" class="w-full h-64 lg:h-96"></div>
                 <div class="flex flex-col items-center gap-4">
                     <div class="flex justify-center gap-2 lg:gap-4 mt-4">
-                        <div class="die w-16 h-16 flex items-center justify-center bg-white border border-gray-300 rounded-lg shadow-md"
-                            id="die0"></div>
-                        <div class="die w-16 h-16 flex items-center justify-center bg-white border border-gray-300 rounded-lg shadow-md"
-                            id="die1"></div>
-                        <div class="die w-16 h-16 flex items-center justify-center bg-white border border-gray-300 rounded-lg shadow-md"
-                            id="die2"></div>
-                        <div class="die w-16 h-16 flex items-center justify-center bg-white border border-gray-300 rounded-lg shadow-md"
-                            id="die3"></div>
-                        <div class="die w-16 h-16 flex items-center justify-center bg-white border border-gray-300 rounded-lg shadow-md"
-                            id="die4"></div>
+                        <img class="die w-16 h-16 object-contain cursor-pointer" id="die0" src="../image/dice1.png">
+                        <img class="die w-16 h-16 object-contain cursor-pointer" id="die1" src="../image/dice1.png">
+                        <img class="die w-16 h-16 object-contain cursor-pointer" id="die2" src="../image/dice1.png">
+                        <img class="die w-16 h-16 object-contain cursor-pointer" id="die3" src="../image/dice1.png">
+                        <img class="die w-16 h-16 object-contain cursor-pointer" id="die4" src="../image/dice1.png">
                     </div>
                     <button id="rollButtonInGame"
                         class="mt-4 px-6 py-2  rounded-lg text-white hover:bg-blue-400 transition-all">
@@ -97,12 +93,9 @@
                         <thead>
                             <tr>
                                 <th class="p-2 border-b">Catégorie</th>
-                                <!-- Les en-têtes de colonne pour chaque joueur seront ajoutés ici dynamiquement -->
                             </tr>
                         </thead>
-                        <tbody id="scoreboardBody">
-                            <!-- Les lignes pour chaque catégorie seront ajoutées ici dynamiquement -->
-                        </tbody>
+                        <tbody id="scoreboardBody"></tbody>
                     </table>
                 </div>
             </div>
