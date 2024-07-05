@@ -28,7 +28,11 @@
                     <img src="../image/Logo-yams.webp" alt="Logo - YAMS" class="h-full w-fit object-contain">
                 </div>
             </a>
-            <a href="/page/jeu.html" id="gameButton" class="lg:px-6 px-2 text-sm lg:text-base py-2 h-fit bg-green-500 rounded-[75px] flex items-center text-white gap-4 hover:bg-white hover:text-black transition-all">
+            <button id="soundControlButton" class="bg-blue-500 text-white px-4 py-2 rounded-full">
+                🔇
+            </button>
+            <a href="/page/jeu.html" id="gameButton"
+                class="lg:px-6 px-2 text-sm lg:text-base py-2 h-fit bg-green-500 rounded-[75px] flex items-center text-white gap-4 hover:bg-white hover:text-black transition-all">
                 <div class="w-fit h-10">
                     <img src="../image/sitcker-de.webp" alt="" class="w-fit h-full object-contain">
                 </div>
@@ -100,6 +104,12 @@
             </div>
         </div>
     </main>
+
+    <audio id="backgroundMusic" loop>
+        <source src="../sound/casino.mp4" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
     <script type="module" src="../js/script.js"></script>
 </body>
 
