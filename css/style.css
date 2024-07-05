@@ -257,13 +257,14 @@ a {
 
 a::after,
 a::before {
-  border: 3px solid #694625;
+  border: 3px solid #008427;
   content: "";
   position: absolute;
   border-radius: inherit;
   width: 100%;
   height: 100%;
   left: 0px;
+  top: -4px;
   bottom: 0px;
   transition: all 0.25s;
 }
@@ -435,9 +436,7 @@ ul {
   background: #f5f3e2;
 }
 
-.police {
-  font-family: cursive;
-}
+
 
 .centered-div {
   width: auto; /* Largeur de ta div */
