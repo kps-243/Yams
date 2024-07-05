@@ -41,9 +41,9 @@ class Player {
       six: null,
       brelan: null,
       carre: null,
-      fullHouse: null,
-      petiteSuite: null,
-      grandeSuite: null,
+      fullhouse: null,
+      petitesuite: null,
+      grandesuite: null,
       yams: null,
       chance: null,
       bonus: null,
@@ -104,7 +104,7 @@ class YamsGame {
   
     // Define categories
     const categories = [
-      "As", "Deux", "Trois", "Quatre", "Cinq", "Six", "Brelan", "Carré", "Full House",
+      "As", "Deux", "Trois", "Quatre", "Cinq", "Six", "Brelan", "Carre", "Full House",
       "Petite Suite", "Grande Suite", "Yams", "Chance", "Total"
     ];
   
@@ -207,15 +207,15 @@ class YamsGame {
         return counts.some((count) => count >= 3) ? 30 : 0;
       case "carre":
         return counts.some((count) => count >= 4) ? 40 : 0;
-      case "fullHouse":
+      case "fullhouse":
         return counts.includes(3) && counts.includes(2) ? 35 : 0;
-      case "petiteSuite":
+      case "petitesuite":
         return [0, 1, 2, 3].every((i) => counts[i] >= 1) ||
           [1, 2, 3, 4].every((i) => counts[i] >= 1) ||
           [2, 3, 4, 5].every((i) => counts[i] >= 1)
           ? 20
           : 0;
-      case "grandeSuite":
+      case "grandesuite":
         return [0, 1, 2, 3, 4].every((i) => counts[i] === 1) ||
           [1, 2, 3, 4, 5].every((i) => counts[i] === 1)
           ? 25
@@ -248,7 +248,7 @@ class YamsGame {
   }
 
   markScore(cell) {
-    const category = cell.dataset.category;
+    const category = cell.dataset.category.toLowerCase();
     const player = this.players[this.currentPlayerIndex];
     if (player.scoreSheet[category] === null) {
       const score = this.calculateScore(category);
@@ -282,6 +282,7 @@ class YamsGame {
       this.nextPlayer();
     } else {
       alert("Cette catégorie a déjà été utilisée. Choisissez-en une autre.");
+      console.log(player.scoreSheet);
     }
   }
 
@@ -291,6 +292,7 @@ class YamsGame {
         const cell = document.getElementById(`player${index}-${category}`);
         if (cell) {
           cell.textContent = player.scoreSheet[category];
+
         }
       });
       document.getElementById(`player${index}-total`).textContent =
@@ -349,8 +351,6 @@ class YamsGame {
     const counts = this.countDiceValues();
     const values = this.getDiceValues();
 
-    console.log(values);
-    console.log(counts);
 
     // Filtrer les catégories possibles en fonction des dés actuels
     const possibleCategories = availableCategories.filter((category) => {
@@ -371,15 +371,15 @@ class YamsGame {
           return counts.some((count) => count >= 3);
         case "carre":
           return counts.some((count) => count >= 4);
-        case "fullHouse":
+        case "fullhouse":
           return counts.includes(3) && counts.includes(2);
-        case "petiteSuite":
+        case "petitesuite":
           return (
             [0, 1, 2, 3].every((i) => counts[i] >= 1) ||
             [1, 2, 3, 4].every((i) => counts[i] >= 1) ||
             [2, 3, 4, 5].every((i) => counts[i] >= 1)
           );
-        case "grandeSuite":
+        case "grandesuite":
           return (
             [0, 1, 2, 3, 4].every((i) => counts[i] === 1) ||
             [1, 2, 3, 4, 5].every((i) => counts[i] === 1)
@@ -546,7 +546,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("setupButton").onclick = () => {
     const numPlayers = parseInt(document.getElementById("numPlayers").value);
     const playerInputs = document.getElementById("playerInputs");
-    playerInputs.style.display = "block";
+    playerInputs.style.display = "flex";
     playerInputs.innerHTML = "";
     for (let i = 0; i < numPlayers; i++) {
       const input = document.createElement("input");
