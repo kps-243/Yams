@@ -259,7 +259,7 @@ footer form input[type="submit"] {
   border: none;
   border-top: 1px solid #000; /* Couleur et épaisseur de la ligne */
   margin: 0 auto; /* Centrer la ligne horizontalement */
-  width: 48%; /* Largeur de la ligne */
+  width: 73%; /* Largeur de la ligne */
 }
 
 .image-section {
@@ -284,8 +284,21 @@ footer form input[type="submit"] {
 }
 
 .contenut {
-  margin: 50px;
+  margin-top: 50px;
   text-align: center;
+  margin-left: 160px;
+  margin-right: 160px;
+}
+
+.contenut1 {
+  margin: 50px;
+  margin-left: 160px;
+  margin-right: 160px;
+}
+
+.contenut2 {
+  margin-left: 160px;
+  margin-right: 160px;
 }
 
 .image-class {
