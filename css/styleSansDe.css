@@ -4,10 +4,6 @@ body {
   background-color: #f0f0f0;
   margin: 0;
   padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column; /* Ensure the content stacks vertically */
   min-height: 100vh;
   background-image: url("../image/DALLE-2024-07-04-17.09.webp");
   background-size: cover;
@@ -16,19 +12,18 @@ body {
   background-position: center;
 }
 
-.container {
+/* .container {
   max-width: 1200px;
   width: 100%;
   margin: 20px;
   padding: 20px;
-  background-color: rgba(255, 255, 255, 0.9);
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
-}
+} */
 
 /* Styles pour l'en-tête */
 header {
