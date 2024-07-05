@@ -529,6 +529,75 @@ a.btn:hover::before {
   left: 0.35rem;
 }
 
+a.btn1 {
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 500;
+  font-family: Arial, Helvetica, sans-serif;
+  border: 0;
+  position: relative;
+  letter-spacing: 0.15em;
+  margin: 0 auto;
+  padding: 1rem 2.5rem;
+  background: transparent;
+  outline: none;
+  font-size: 38px;
+  color: var(--black);
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.15s;
+  z-index: 1;
+}
+
+a.btn1::after,
+a.btn1::before {
+  border: 0;
+  content: "";
+  position: absolute;
+  height: 30%;
+  width: 5%;
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  z-index: -2;
+  border-radius: 50%;
+}
+
+a.btn1::before {
+  background-color: var(--colorSecondary);
+  top: -0.75rem;
+  left: 0.5rem;
+  animation: topAnimation 2s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.25s
+    infinite alternate;
+}
+
+a.btn1::after {
+  background-color: var(--colorPrimary);
+  top: 3rem;
+  left: 13rem;
+  animation: bottomAnimation 2s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.5s
+    infinite alternate;
+  border-radius: 10px;
+}
+
+a.btn1:hover {
+  color: white;
+}
+
+a.btn1:hover::before,
+a.btn1:hover::after {
+  top: 0;
+  height: 100%;
+  width: 100%;
+  border-radius: 0;
+  animation: none;
+}
+
+a.btn1:hover::after {
+  left: 0rem;
+}
+
+a.btn1:hover::before {
+  top: 0.5rem;
+  left: 0.35rem;
+}
+
 /* Keyframes */
 @keyframes topAnimation {
   from {
