@@ -38,6 +38,7 @@ body {
 .scoreboard table {
   width: 100%;
   border-collapse: collapse;
+  background-color: #F5F3E2;
 }
 
 .scoreboard th,
@@ -48,7 +49,7 @@ body {
 }
 
 .scoreboard th {
-  background-color: #f8f8f8;
+  background-color: #F5F3E2;
 }
 
 #threejs-container {
