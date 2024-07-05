@@ -1,8 +1,7 @@
-import Player from "./player.js"
-import Die from "./de.js"
 import * as THREE from "three";
 import { TextureLoader } from "three";
-
+import Player from "./player.js";
+import Die from "./de.js";
 class YamsGame {
   constructor(players) {
     this.players = players.map((name) => new Player(name));
@@ -249,7 +248,6 @@ class YamsGame {
       document.getElementById(`player${index}-total`).textContent =
         player.getTotalScore();
     });
-
   }
 
   resetDice() {
@@ -483,6 +481,7 @@ class YamsGame {
 
   loadSound() {
     this.rollSound = new Audio("../sound/roll.mp3"); // Remplacez par le chemin correct de votre fichier son
+    this.rollSound.volume = 1.0; // Volume maximum pour le son des dés
   }
 
   playRollSound() {

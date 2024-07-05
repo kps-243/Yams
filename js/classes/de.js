@@ -1,4 +1,3 @@
-// Classe Die
 class Die {
   constructor() {
     this.value = 0;
