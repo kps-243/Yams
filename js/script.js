@@ -573,7 +573,6 @@ document.addEventListener("DOMContentLoaded", () => {
       input.classList.add("border", "ml-2", "rounded-lg", "p-2");
       playerInputs.appendChild(input);
     }
-    document.getElementById("setupButton").style.display = "none";
     document.getElementById("startButton").style.display = "block";
   };
 
