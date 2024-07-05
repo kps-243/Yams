@@ -581,22 +581,51 @@ document.addEventListener("DOMContentLoaded", () => {
     const numPlayers = parseInt(document.getElementById("numPlayers").value);
     const players = [];
     for (let i = 0; i < numPlayers; i++) {
-      const playerName = document.getElementById(`player${i}`).value;
-      if (playerName) {
-        players.push(playerName);
-      }
+        const playerName = document.getElementById(`player${i}`).value;
+        if (playerName) {
+            players.push(playerName);
+        }
     }
 
     if (players.length === numPlayers) {
-      document.getElementById("setup").style.display = "none";
-      document.getElementById("game").style.display = "block";
-      document.getElementById("de").style.display = "block";
-      game = new YamsGame(players);
-      game.start();
+        document.getElementById("setup").style.display = "none";
+        document.getElementById("game").style.display = "block";
+        document.getElementById("de").style.display = "block";
+        game = new YamsGame(players);
+        game.start();
+
+        // Modifier le bouton dans le header pour "Quitter la partie"
+        const gameButton = document.getElementById("gameButton");
+        const gameButtonText = document.getElementById("gameButtonText");
+        gameButtonText.textContent = "Quitter la partie";
+        gameButton.classList.remove("bg-green-500");
+        gameButton.classList.add("bg-red-500");
+        gameButton.onclick = () => {
+            endGame();
+        };
     } else {
-      alert("Veuillez entrer les noms de tous les joueurs.");
+        alert("Veuillez entrer les noms de tous les joueurs.");
     }
-  };
+};
+
+function endGame() {
+    // Réinitialiser l'état du jeu
+    console.log("Quitter la partie");
+
+    // Modifier le bouton dans le header pour "Nouvelle Partie"
+    const gameButton = document.getElementById("gameButton");
+    const gameButtonText = document.getElementById("gameButtonText");
+    gameButtonText.textContent = "Nouvelle Partie";
+    gameButton.classList.remove("bg-red-500");
+    gameButton.classList.add("bg-green-500");
+    gameButton.onclick = () => {
+        // Réinitialiser la section de configuration et autres éléments pour une nouvelle partie
+        document.getElementById("setup").style.display = "block";
+        document.getElementById("game").style.display = "none";
+        // Ajoutez ici d'autres éléments à réinitialiser pour commencer une nouvelle partie
+    };
+}
+
 
   document.getElementById("rollButtonInGame").onclick = () => {
     if (game) {
